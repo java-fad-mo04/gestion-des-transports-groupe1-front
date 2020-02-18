@@ -10,11 +10,20 @@ import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import {StatutConnecteService} from "./auth/statut-connecte.service";
 import {AuthInterceptorService} from "./auth/auth-interceptor.service";
+import { MenuCollabComponent } from './menu-collab/menu-collab.component';
+import {ResaCollabComponent } from './resa-collab/resa-collab.component';
+import {AnnoncesCollabComponent} from './annonces-collab/annonces-collab.component';
+import {StatCollabComponent} from './stat-collab/stat-collab.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
-  { path:'tech', component: TechComponent, canActivate:[StatutConnecteService]}, // /tech accessible uniquement si connecté
-  { path:'auth', component: AuthComponent},
-  { path: '', redirectTo: '/tech', pathMatch: 'full'}
+  { path: 'tech', component: TechComponent, canActivate:[StatutConnecteService]}, // /tech accessible uniquement si connecté
+  { path: 'auth', component: AuthComponent},
+  { path: 'collaborateur', component: MenuCollabComponent},
+  { path: 'collaborateur/reservations', component: ResaCollabComponent},
+  { path: 'collaborateur/annonces', component: AnnoncesCollabComponent},
+  { path: 'collaborateur/statistiques', component: StatCollabComponent},
+  { path: '', redirectTo: '/auth', pathMatch: 'full'}
 ];
 
 
@@ -22,7 +31,11 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     TechComponent,
-    AuthComponent
+    AuthComponent,
+    MenuCollabComponent,
+    ResaCollabComponent,
+    AnnoncesCollabComponent,
+    StatCollabComponent
   ],
   imports: [
     BrowserModule,

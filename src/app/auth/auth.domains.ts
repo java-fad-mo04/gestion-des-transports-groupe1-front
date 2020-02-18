@@ -12,7 +12,7 @@ export class Collegue {
     Object.assign(this, params);
   }
 
-  estAnonyme():boolean {
+  estAnonyme(): boolean {
     return this.email == undefined;
   }
 
