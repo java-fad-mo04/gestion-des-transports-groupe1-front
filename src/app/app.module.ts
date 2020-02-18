@@ -10,19 +10,22 @@ import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import {StatutConnecteService} from "./auth/statut-connecte.service";
 import {AuthInterceptorService} from "./auth/auth-interceptor.service";
-import { MenuCollabComponent } from './menu-collab/menu-collab.component';
-import {ResaCollabComponent } from './resa-collab/resa-collab.component';
-import {AnnoncesCollabComponent} from './annonces-collab/annonces-collab.component';
-import {StatCollabComponent} from './stat-collab/stat-collab.component';
+import { MenuComponent } from './menu/menu.component';
+import {ReservationsComponent } from './reservations/reservations.component';
+import {AnnoncesComponent} from './annonces/annonces.component';
+import {StatistiquesComponent} from './statistiques/statistiques.component';
 import { from } from 'rxjs';
+import { VehiculesComponent } from './vehicules/vehicules.component';
+import { PlanningComponent } from './planning/planning.component';
+import { OccupationComponent } from './occupation/occupation.component';
 
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate:[StatutConnecteService]}, // /tech accessible uniquement si connecté
   { path: 'auth', component: AuthComponent},
-  { path: 'collaborateur', component: MenuCollabComponent},
-  { path: 'collaborateur/reservations', component: ResaCollabComponent},
-  { path: 'collaborateur/annonces', component: AnnoncesCollabComponent},
-  { path: 'collaborateur/statistiques', component: StatCollabComponent},
+  { path: 'collaborateur', component: MenuComponent},
+  { path: 'collaborateur/reservations', component: ReservationsComponent},
+  { path: 'collaborateur/annonces', component: AnnoncesComponent},
+  { path: 'collaborateur/statistiques', component: StatistiquesComponent},
   { path: '', redirectTo: '/auth', pathMatch: 'full'}
 ];
 
@@ -32,10 +35,13 @@ const routes: Routes = [
     AppComponent,
     TechComponent,
     AuthComponent,
-    MenuCollabComponent,
-    ResaCollabComponent,
-    AnnoncesCollabComponent,
-    StatCollabComponent
+    MenuComponent,
+    ReservationsComponent,
+    AnnoncesComponent,
+    StatistiquesComponent,
+    VehiculesComponent,
+    PlanningComponent,
+    OccupationComponent
   ],
   imports: [
     BrowserModule,
