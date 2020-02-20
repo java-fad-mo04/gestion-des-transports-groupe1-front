@@ -9,23 +9,7 @@ import {Collegue} from "./auth/auth.domains";
  */
 @Component({
   selector: 'app-root',
-<<<<<<< HEAD
-  template: `
-    <div class="jumbotron">
-    <div *ngIf="!(collegueConnecte | async).estAnonyme()" align="end">
-        <span>{{(collegueConnecte | async).email}}</span>
-        <span>({{(collegueConnecte | async).roles}})</span>
-        <a  class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</a>
-      </div>
-    <img width="500" height="242" src="assets/images/gdt04a.jpg">
-      <!-- <h2 class="h1 h1-responsive">GDT - Gestion Des Transports</h2> -->
-
-    </div>
-    <router-outlet></router-outlet>
-  `,
-=======
   templateUrl: './app.component.html',
->>>>>>> Authentification_fla
   styles: []
 })
 

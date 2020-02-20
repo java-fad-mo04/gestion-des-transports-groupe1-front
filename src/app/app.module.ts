@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { TechComponent } from './tech/tech.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
+import { MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import {StatutConnecteService} from "./auth/statut-connecte.service";
@@ -18,6 +20,7 @@ import { from } from 'rxjs';
 import { VehiculesComponent } from './vehicules/vehicules.component';
 import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
+import { ModalComponent } from './modal/modal.component';
 
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate:[StatutConnecteService]}, // /tech accessible uniquement si connecté
@@ -41,20 +44,24 @@ const routes: Routes = [
     StatistiquesComponent,
     VehiculesComponent,
     PlanningComponent,
-    OccupationComponent
+    OccupationComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
+    MDBBootstrapModulesPro.forRoot(),
     FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
-    multi: true
+    multi: true,
+    MDBSpinningPreloader
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ ModalComponent ]
 })
 export class AppModule { }
