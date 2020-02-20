@@ -2,7 +2,8 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#"><img  width="150" height="69" src="assets/images/gdt05_mini.jpg"></a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" href="#"><img width="150" height="69"
+        src="assets/images/gdt05_mini.jpg"></a></mdb-navbar-brand>
 
   <ul class="navbar-nav ">
     <li class="nav-item">
@@ -20,43 +21,33 @@
 
 
 
-    <li *ngFor="let r of listeRoles">
 
+    <ng-container *ngFor="let r of listeRoles">
+      <ng-container *ngIf="r === 'ROLE_ADMINISTRATEUR'">
 
-      <nav class="nav-item" *ngIf="r=='ROLE_ADMINISTRATEUR'">
-
-
-        <li class="nav-item">
-          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/occupation"
-            mdbWavesEffect>Occupation </a>
-        </li>
-        <li class="nav-item">
-          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/planning"
-            mdbWavesEffect>Planning </a>
-        </li>
         <li class="nav-item">
           <a routerLinkActive="active" class="nav-link waves-light" routerLink="/admin/chauffeurs"
-            mdbWavesEffect>Chauffeurs </a>
+            mdbWavesEffect>Chauffeurs
+          </a>
         </li>
         <li class="nav-item">
           <a routerLinkActive="active" class="nav-link waves-light" routerLink="/admin/vehicules"
             mdbWavesEffect>Véhicules</a>
         </li>
-      </nav>
 
-      <nav class="nav-item" *ngIf="r=='ROLE_CHAUFFEUR'">
+      </ng-container>
 
+      <ng-container *ngIf="r === 'ROLE_CHAUFFEUR'">
         <li class="nav-item">
           <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/occupation"
             mdbWavesEffect>Occupation </a>
         </li>
         <li class="nav-item">
           <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/planning"
-            mdbWavesEffect>Planning </a>
+            mdbWavesEffect>Planning
+          </a>
         </li>
-
-      </nav>
-
-    </li>
+      </ng-container>
+    </ng-container>
   </ul>
 </mdb-navbar>
