@@ -21,7 +21,7 @@ export class AuthComponent implements OnInit {
   collegue: Collegue = new Collegue({});
   err: boolean;
 
-  constructor(private _authSrv:AuthService, private _router:Router) { }
+  constructor(private _authSrv: AuthService, private _router: Router) { }
 
   ngOnInit() {
   }
@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
         // col => this._router.navigate(['/tech']),
 
         // en cas de succès, redirection vers la page /menu-collab
-        col => this._router.navigate(['/collaborateur']),
+        col => this._router.navigate(['collaborateur/reservations']),
 
 
         // en cas d'erreur, affichage d'un message d'erreur

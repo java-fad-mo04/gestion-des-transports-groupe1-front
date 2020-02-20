@@ -2,26 +2,64 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" height="30" alt=""></a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png"
+        height="30" alt=""></a></mdb-navbar-brand>
 
-  <!-- Collapsible content -->
-  <links>
+  <ul class="navbar-nav ">
+    <li class="nav-item">
+      <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/reservations"
+        mdbWavesEffect>Vos réservations</a>
+    </li>
+    <li class="nav-item">
+      <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/annonces" mdbWavesEffect>Vos
+        annonces</a>
+    </li>
+    <li class="nav-item">
+      <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/statistiques"
+        mdbWavesEffect>Statistiques </a>
+    </li>
 
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/reservations" mdbWavesEffect>Vos réservations</a>
-      </li>
-      <li class="nav-item">
-        <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/annonces" mdbWavesEffect>Vos annonces</a>
-      </li>
-      <li class="nav-item">
-        <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/statistiques" mdbWavesEffect>Statistiques </a>
-      </li>
 
-    </ul>
-    <!-- Links -->
-  </links>
-  <!-- Collapsible content -->
+
+    <li *ngFor="let r of listeRoles">
+
+
+      <nav class="nav-item" *ngIf="r=='ROLE_ADMINISTRATEUR'">
+
+
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/occupation"
+            mdbWavesEffect>Occupation </a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/planning"
+            mdbWavesEffect>Planning </a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/admin/chauffeurs"
+            mdbWavesEffect>Chauffeurs </a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/admin/vehicules"
+            mdbWavesEffect>Véhicules</a>
+        </li>
+      </nav>
+
+      <nav class="nav-item" *ngIf="r=='ROLE_CHAUFFEUR'">
+
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/occupation"
+            mdbWavesEffect>Occupation </a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/planning"
+            mdbWavesEffect>Planning </a>
+        </li>
+
+      </nav>
+
+    </li>
+
+  </ul>
+
 </mdb-navbar>
-<!-- <a class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</a> -->
