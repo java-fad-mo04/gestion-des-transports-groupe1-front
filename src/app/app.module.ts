@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { TechComponent } from './tech/tech.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
-import { MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import {StatutConnecteService} from "./auth/statut-connecte.service";
@@ -52,16 +50,13 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    MDBBootstrapModulesPro.forRoot(),
     FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
-    MDBSpinningPreloader
   }],
-  bootstrap: [AppComponent],
-  entryComponents: [ ModalComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
