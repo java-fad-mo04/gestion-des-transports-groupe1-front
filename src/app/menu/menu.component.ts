@@ -15,7 +15,6 @@ export class MenuComponent implements OnInit {
 
   collegueConnecte: Observable<Collegue>;
   listeRoles: string[];
-  testRole: boolean = true;
 
   constructor(private _authSrv: AuthService) { }
 
