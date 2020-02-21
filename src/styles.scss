@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+	background-color: white;
+}
+
+// barres primaires
+.gdp-barre1 {
+	font-family: "Arial";
+	font-size: 36px;
+	font-weight: bold;
+	color: #ECECEC;
+	background-color: #3F729B;
+}
+
+// barres secondaires
+.gdp-barre2 {
+  background-color:rgb(204, 204, 204)
+}
+
+// réserver un transport et plus...
+.gdp-button1 {
+  background-color: #AFBD1F;
+}
+
+// bouton détail
+.gdp-button2 {
+  background-color: #E0E0E0;
+}
+
+// bouton flèches directionelles
+.gdp-button3 {
+  background-color: #E0E0E0;
+}

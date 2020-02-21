@@ -39,7 +39,7 @@ export class AuthService {
    *
    * @returns {Observable<Collegue>}
    */
-  get collegueConnecteObs():Observable<Collegue> {
+  get collegueConnecteObs(): Observable<Collegue> {
     return this.collegueConnecteSub.asObservable();
   }
 
@@ -70,7 +70,7 @@ export class AuthService {
    * @param {string} mdp : mot de passe de l'utilisation
    * @returns {Observable<Collegue>}
    */
-  connecter(email:string, mdp:string):Observable<Collegue> {
+  connecter(email: string, mdp: string): Observable<Collegue> {
 
     const config = {
       headers: new HttpHeaders({
