@@ -25,4 +25,18 @@ export class MenuComponent implements OnInit {
     });
     console.log(this.listeRoles);
   }
+
+  // Matt : nouvelle fonction de test si la personne a un role ou pas
+  hasRole(role: string): boolean {
+
+    //console.log('this.listeRoles : ' + this.listeRoles + ' role : ' + role);
+
+    if (this.listeRoles.indexOf(role) !== -1) {
+      return true;
+    }
+    return false;
+  }
+
+
+
 }

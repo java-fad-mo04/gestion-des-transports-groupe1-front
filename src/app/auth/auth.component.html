@@ -1,6 +1,7 @@
+<img width="500" height="242" src="assets/images/gdt04a.jpg">
 <mdb-card class="animated zoomIn">
-  <mdb-card-header class="primary-color white-text">
-    <h4 class="text-center">GDT - Gestion Du Transport - Authentification</h4>
+  <mdb-card-header class="gdp-barre1">
+    <h4 class="text-right">Authentification</h4>
   </mdb-card-header>
   <mdb-card-body>
     <mdb-card>
@@ -9,9 +10,10 @@
           <h4>Utilisateurs</h4>
         </mdb-card-title>
         <mdb-card-text>
-          Deux utilisateurs sont créés par défaut :
+          Trois profils d'utilisateurs :
           <ul>
             <li>admin@dev.fr / superpass / ROLE_ADMINISTRATEUR, ROLE_UTILISATEUR</li>
+            <li>chauffeur@dev.fr / superpass / ROLE_CHAUFFEUR, ROLE_UTILISATEUR</li>
             <li>user@dev.fr / superpass / ROLE_UTILISATEUR</li>
           </ul>
 
@@ -35,7 +37,7 @@
       </div>
 
       <div class="text-center">
-        <input type="submit" mdbBtn color="primary" sclass="waves-light" mdbWavesEffect value="Se connecter"
+        <input type="submit" class="gdp-button4" sclass="waves-light" mdbWavesEffect value="Se connecter"
           (click)="connecter()">
       </div>
       <div *ngIf="err" class="text-danger">
