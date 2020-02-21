@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'admin/vehicules', component: VehiculesComponent },
   { path: 'chauffeur/occupation', component: OccupationComponent },
   { path: 'chauffeur/planning', component: PlanningComponent },
-  { path: '', redirectTo: '/auth', pathMatch: 'full' }
+  { path: '', redirectTo: '/connexion', pathMatch: 'full' }
 ];
 
 
