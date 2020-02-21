@@ -16,8 +16,8 @@ export class DataService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  listerAnnoncesCovoiturage(idCol: number): Observable<Reservation> {
-    return this._httpClient.get<Reservation>(`${url}reservationsCovoiturage?idCol=${idCol}`);
+  listerAnnoncesCovoiturage(idCol: number): Observable<Reservation[]> {
+    return this._httpClient.get<Reservation[]>(`${url}reservationsCovoiturage?idCol=${idCol}`);
   }
 
 
@@ -26,23 +26,23 @@ export class DataService {
   }
 
   filterAnnoncesCovoiturage(filtreResa: Reservation): Observable<Reservation> {
-    return this._httpClient.post<Reservation>(`${url}/reservationsCovoiturage`, filtreResa);
+    return this._httpClient.post<Reservation>(`${url}reservationsCovoiturage`, filtreResa);
   }
 
   ajouterPassager(idCol: number, idResa: number): Observable<void> {
-    return this._httpClient.patch<void>(`${url}/reservationsCovoiturage/idCol=${idCol}?idResa=${idResa}`, null);
+    return this._httpClient.patch<void>(`${url}reservationsCovoiturage/idCol=${idCol}?idResa=${idResa}`, null);
   }
 
   creerAnnonceCovoiturage(idCol: number, nouvelleResa: Reservation): Observable<void> {
-    return this._httpClient.post<void>(`${url}/reservationsCovoiturage?idCol=${idCol}`, nouvelleResa);
+    return this._httpClient.post<void>(`${url}reservationsCovoiturage?idCol=${idCol}`, nouvelleResa);
   }
 
   listerReservationsVehicule(idCol: number): Observable<Reservation[]> {
-    return this._httpClient.get<Reservation[]>(`${url}/reservationsSociete?idCol=${idCol}`);
+    return this._httpClient.get<Reservation[]>(`${url}reservationsSociete?idCol=${idCol}`);
   }
 
   creerReservationVehicule(nouvelleResa: Reservation): Observable<void> {
-    return this._httpClient.post<void>(`${url}/reservationsSociete`, nouvelleResa);
+    return this._httpClient.post<void>(`${url}reservationsSociete`, nouvelleResa);
   }
 
 }
