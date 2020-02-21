@@ -16,22 +16,13 @@ export class DataService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  listerAnnoncesCovoituragehistorique(idCol: number): Observable<Reservation> {
-    return this._httpClient.get<Reservation>(`${url}/reservationsCovoiturage?idCol=${idCol}`)
-      .pipe(
-        tap(histo => histo.date.getTime() <= Date.now())
-      );
+  listerAnnoncesCovoiturage(idCol: number): Observable<Reservation> {
+    return this._httpClient.get<Reservation>(`${url}reservationsCovoiturage?idCol=${idCol}`);
   }
 
-  listerAnnoncesCovoiturageCourante(idCol: number): Observable<Reservation> {
-    return this._httpClient.get<Reservation>(`${url}/reservationsCovoiturage?idCol=${idCol}`)
-      .pipe(
-        tap(cour => cour.date.getTime() > Date.now())
-      );
-  }
 
-  listerReservationsCCovoiturage(idPass: number): Observable<Reservation> {
-    return this._httpClient.get<Reservation>(`${url}/reservationsCovoiturage?idPass=${idPass}`);
+  listerReservationsCCovoiturage(idPass: number): Observable<Reservation[]> {
+    return this._httpClient.get<Reservation[]>(`${url}reservationsCovoiturage?idPass=${idPass}`);
   }
 
   filterAnnoncesCovoiturage(filtreResa: Reservation): Observable<Reservation> {
@@ -46,8 +37,8 @@ export class DataService {
     return this._httpClient.post<void>(`${url}/reservationsCovoiturage?idCol=${idCol}`, nouvelleResa);
   }
 
-  listerReservationsVehicule(idCol: number): Observable<Reservation> {
-    return this._httpClient.get<Reservation>(`${url}/reservationsSociete?idCol=${idCol}`);
+  listerReservationsVehicule(idCol: number): Observable<Reservation[]> {
+    return this._httpClient.get<Reservation[]>(`${url}/reservationsSociete?idCol=${idCol}`);
   }
 
   creerReservationVehicule(nouvelleResa: Reservation): Observable<void> {
