@@ -23,13 +23,13 @@ import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService] }, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent },
-  { path: 'collaborateur/reservations', component: ReservationsComponent },
-  { path: 'collaborateur/annonces', component: AnnoncesComponent },
-  { path: 'collaborateur/statistiques', component: StatistiquesComponent },
-  { path: 'admin/chauffeurs', component: ChauffeursComponent },
-  { path: 'admin/vehicules', component: VehiculesComponent },
-  { path: 'chauffeur/occupation', component: OccupationComponent },
-  { path: 'chauffeur/planning', component: PlanningComponent },
+  { path: 'collaborateur/reservations', component: ReservationsComponent, canActivate: [StatutConnecteService] },
+  { path: 'collaborateur/annonces', component: AnnoncesComponent, canActivate: [StatutConnecteService] },
+  { path: 'collaborateur/statistiques', component: StatistiquesComponent, canActivate: [StatutConnecteService] },
+  { path: 'admin/chauffeurs', component: ChauffeursComponent, canActivate: [StatutConnecteService] },
+  { path: 'admin/vehicules', component: VehiculesComponent, canActivate: [StatutConnecteService] },
+  { path: 'chauffeur/occupation', component: OccupationComponent, canActivate: [StatutConnecteService] },
+  { path: 'chauffeur/planning', component: PlanningComponent, canActivate: [StatutConnecteService] },
   { path: '', redirectTo: '/connexion', pathMatch: 'full' }
 ];
 

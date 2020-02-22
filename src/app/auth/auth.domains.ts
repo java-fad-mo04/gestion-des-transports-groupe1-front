@@ -13,7 +13,7 @@ export class Collegue {
   }
 
   estAnonyme(): boolean {
-    return this.email == undefined;
+    return this.email === undefined;
   }
 
 }
