@@ -2,7 +2,6 @@
 
 <!-- Matt : nouvelle barre de menu fonctionnelle avec la fonction hasRole() dans le TS -->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
-  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
     <div class="container">
         <mdb-navbar-brand><img width="150" height="69" src="assets/images/gdt05_mini.jpg"></mdb-navbar-brand>
         <ul class="nav navbar-nav" routerLinkActive="active">
@@ -17,7 +16,6 @@
             <li class="nav-item" *ngIf="hasRole('ROLE_CHAUFFEUR')"><a class="nav-link" routerLink="/chauffeur/planning">Planning</a></li>
         </ul>
     </div>
-  </nav>
   </mdb-navbar>
 
 

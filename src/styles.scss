@@ -18,7 +18,7 @@ body {
   background-color:rgb(204, 204, 204)
 }
 
-// réserver un transport et plus...
+// réserver un transport
 .gdp-button1 {
   background-color: #AFBD1F;
 }
@@ -34,7 +34,19 @@ body {
   font-size: 18px;
 }
 
+// bouton de connexion bleu, plus utilisé remplacé par gdp-button1
 .gdp-button4 {
   background-color: #3F729B;
   color: #ECECEC;
+}
+
+// bouton d'annulation
+.gdp-button5 {
+  background-color: #FF0000;
+  color: #ECECEC;
+}
+
+// alignement à gauche (modal)
+.agauche {
+  text-align:left;
 }
