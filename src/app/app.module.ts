@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -19,12 +19,16 @@ import { VehiculesComponent } from './vehicules/vehicules.component';
 import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
+import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
+
+
 
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService] }, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent },
   { path: 'collaborateur/reservations', component: ReservationsComponent },
   { path: 'collaborateur/annonces', component: AnnoncesComponent },
+  { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent},
   { path: 'collaborateur/statistiques', component: StatistiquesComponent },
   { path: 'admin/chauffeurs', component: ChauffeursComponent },
   { path: 'admin/vehicules', component: VehiculesComponent },
@@ -46,20 +50,23 @@ const routes: Routes = [
     VehiculesComponent,
     PlanningComponent,
     OccupationComponent,
-    ChauffeursComponent
+    ChauffeursComponent,
+    CreerAnnoncesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, CreerAnnoncesComponent],
+  exports: [CreerAnnoncesComponent]
 })
 export class AppModule { }
