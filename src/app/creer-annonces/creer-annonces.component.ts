@@ -38,6 +38,6 @@ export class CreerAnnoncesComponent implements OnInit {
     console.log(this.nouvelleResa);
   }
 
-  t
+
 
 }

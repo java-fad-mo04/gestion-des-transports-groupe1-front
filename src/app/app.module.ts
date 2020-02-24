@@ -53,7 +53,7 @@ const routes: Routes = [
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    CreerReservationsComponent
+    CreerReservationsComponent,
     CreerAnnoncesComponent
   ],
   imports: [

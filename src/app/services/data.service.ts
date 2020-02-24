@@ -25,8 +25,8 @@ export class DataService {
     return this._httpClient.get<Reservation[]>(`${url}reservationsCovoiturage?idPass=${idPass}`);
   }
 
-  filterAnnoncesCovoiturage(filtreResa: Reservation): Observable<Reservation> {
-    return this._httpClient.post<Reservation>(`${url}reservationsCovoiturage`, filtreResa);
+  filterAnnoncesCovoiturage(filtreResa: Reservation): Observable<Reservation[]> {
+    return this._httpClient.post<Reservation[]>(`${url}reservationsCovoiturage`, filtreResa);
   }
 
   ajouterPassager(idCol: number, idResa: number): Observable<void> {
