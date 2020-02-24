@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prepare-prod": "node prepare-prod.js",
-    "deploy": "cross-var ngh --no-silent --name=jenkins --email=jenkins@jenkins.io --repo=https://$GH_TOKEN@github.com/$GH_ORG/$APP_REPO.git"
+    "deploy": "cross-var ngh --no-silent --dir=dist/front --name=jenkins --email=jenkins@jenkins.io --repo=https://$GH_TOKEN@github.com/$GH_ORG/$APP_REPO.git"
   },
   "private": true,
   "dependencies": {
