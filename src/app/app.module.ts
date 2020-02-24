@@ -19,11 +19,13 @@ import { VehiculesComponent } from './vehicules/vehicules.component';
 import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
+import {CreerReservationsComponent} from './creer_reservations/creer_reservations.component';
 
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService] }, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent },
   { path: 'collaborateur/reservations', component: ReservationsComponent },
+  { path: 'collaborateur/reservations/creer', component: CreerReservationsComponent },
   { path: 'collaborateur/annonces', component: AnnoncesComponent },
   { path: 'collaborateur/statistiques', component: StatistiquesComponent },
   { path: 'admin/chauffeurs', component: ChauffeursComponent },
@@ -46,7 +48,8 @@ const routes: Routes = [
     VehiculesComponent,
     PlanningComponent,
     OccupationComponent,
-    ChauffeursComponent
+    ChauffeursComponent,
+    CreerReservationsComponent
   ],
   imports: [
     BrowserModule,
