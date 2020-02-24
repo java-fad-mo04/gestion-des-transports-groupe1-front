@@ -1,14 +1,14 @@
-import { Collegue } from "../auth/auth.domains";
-import { Vehicule } from "./Vehicule";
+import { Collegue } from '../auth/auth.domains';
+import { Vehicule } from './Vehicule';
 
-export interface Reservation {
-  id?: number;
-  date?: Date;
-  collegue?: Collegue;
-  depart?: string;
-  destination?: string;
-  passagers?: Collegue[];
-  vehicule?: Vehicule;
-  chauffeur?: Collegue;
-  presenceChauffeur?: boolean;
+export class Reservation {
+  public id?: number;
+  public date?: string;
+  public collegue?: Collegue;
+  public depart?: string;
+  public destination?: string;
+  public passagers?: Collegue[];
+  public vehicule?: Vehicule;
+  public chauffeur?: Collegue;
+  public presenceChauffeur?: boolean;
 }
