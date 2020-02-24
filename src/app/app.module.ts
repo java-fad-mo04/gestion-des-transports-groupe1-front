@@ -27,16 +27,19 @@ import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.componen
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService] }, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent },
-  { path: 'collaborateur/reservations', component: ReservationsComponent }, // Matt : USGDT004 - Collab - Liste des réservations covoiturage
+  // Matt : USGDT004 - Collab - Liste des réservations covoiturage
+  { path: 'collaborateur/reservations', component: ReservationsComponent, canActivate: [StatutConnecteService] },
   { path: 'collaborateur/annonces', component: AnnoncesComponent },
   { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent},
-  { path: 'collaborateur/statistiques', component: StatistiquesComponent },
-  { path: 'admin/chauffeurs', component: ChauffeursComponent },
-  { path: 'admin/vehicules', component: VehiculesComponent },
-  { path: 'admin/vehicules/geolocalisation', component: ReserverComponent }, // Matt : USGDT012 - Admin - Geolocalisation des véhicules
-  { path: 'chauffeur/occupation', component: OccupationComponent },
-  { path: 'chauffeur/planning', component: PlanningComponent },
-  { path: '', redirectTo: '/auth', pathMatch: 'full' }
+  { path: 'collaborateur/annonces', component: AnnoncesComponent, canActivate: [StatutConnecteService] },
+  { path: 'collaborateur/statistiques', component: StatistiquesComponent, canActivate: [StatutConnecteService] },
+  { path: 'admin/chauffeurs', component: ChauffeursComponent, canActivate: [StatutConnecteService] },
+  { path: 'admin/vehicules', component: VehiculesComponent, canActivate: [StatutConnecteService] },
+  // Matt : USGDT012 - Admin - Geolocalisation des véhicules
+  { path: 'admin/vehicules/geolocalisation', component: ReserverComponent },
+  { path: 'chauffeur/occupation', component: OccupationComponent, canActivate: [StatutConnecteService] },
+  { path: 'chauffeur/planning', component: PlanningComponent, canActivate: [StatutConnecteService] },
+  { path: '', redirectTo: '/connexion', pathMatch: 'full' }
 ];
 
 

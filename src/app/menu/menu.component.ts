@@ -37,6 +37,13 @@ export class MenuComponent implements OnInit {
     return false;
   }
 
-
+  // Matt : fonction pour mettre en valeur la page où on se trouve dans le menu
+  highlight(idm: string){
+    //alert('highlight');
+    //this.backgroundColor = "red";
+    //document.getElementById(idm).style.backgroundColor = 'red';
+  }
 
 }
+
+

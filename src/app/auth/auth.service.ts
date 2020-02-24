@@ -31,7 +31,7 @@ export class AuthService {
    */
   private collegueConnecteSub:BehaviorSubject<Collegue> = new BehaviorSubject(COLLEGUE_ANONYME);
 
-  constructor(private _http:HttpClient) {
+  constructor(private _http: HttpClient) {
   }
 
   /**
