@@ -20,7 +20,7 @@ import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
 import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
-
+import { ConfirmationSupressionComponent } from './modals/confirmation-supression/confirmation-supression.component';
 
 
 const routes: Routes = [
@@ -51,7 +51,8 @@ const routes: Routes = [
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    CreerAnnoncesComponent
+    CreerAnnoncesComponent,
+    ConfirmationSupressionComponent
   ],
   imports: [
     BrowserModule,
@@ -59,14 +60,17 @@ const routes: Routes = [
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    NgbModule
-  ],
+    NgbModule,
+    ],
+
+
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
   }],
   bootstrap: [AppComponent, CreerAnnoncesComponent],
-  exports: [CreerAnnoncesComponent]
+  exports: [CreerAnnoncesComponent, ConfirmationSupressionComponent],
+  entryComponents: [ConfirmationSupressionComponent]
 })
 export class AppModule { }
