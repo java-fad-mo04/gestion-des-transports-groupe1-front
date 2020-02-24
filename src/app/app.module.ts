@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -20,12 +20,16 @@ import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
 import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules
+import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
+
+
 
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService] }, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent },
   { path: 'collaborateur/reservations', component: ReservationsComponent }, // Matt : USGDT004 - Collab - Liste des réservations covoiturage
   { path: 'collaborateur/annonces', component: AnnoncesComponent },
+  { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent},
   { path: 'collaborateur/statistiques', component: StatistiquesComponent },
   { path: 'admin/chauffeurs', component: ChauffeursComponent },
   { path: 'admin/vehicules', component: VehiculesComponent },
@@ -49,20 +53,23 @@ const routes: Routes = [
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    ReserverComponent // Matt : USGDT012
+    ReserverComponent, // Matt : USGDT012
+    CreerAnnoncesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, CreerAnnoncesComponent],
+  exports: [CreerAnnoncesComponent]
 })
 export class AppModule { }

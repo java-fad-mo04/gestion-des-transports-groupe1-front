@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^8.2.2",
     "@angular/platform-browser-dynamic": "^8.2.2",
     "@angular/router": "^8.2.2",
-    "@ng-bootstrap/ng-bootstrap": "^5.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^5.3.0",
     "@ngrx/schematics": "^8.2.0",
     "@types/chart.js": "^2.7.30",
     "angular-bootstrap-md": "^8.1.1",

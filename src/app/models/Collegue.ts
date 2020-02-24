@@ -1,10 +1,10 @@
-export interface Collegue {
+export class Collegue {
 
-  id?: number;
-  nom?: string;
-  prenom?: string;
-  email?: string;
-  telephone?: number;
-  permis?: string;
-  urlPhoto?: string;
+  public id?: number;
+  public nom?: string;
+  public prenom?: string;
+  public email?: string;
+  public telephone?: number;
+  public permis?: string;
+  public urlPhoto?: string;
 }
