@@ -7,8 +7,8 @@
 
         <ul class="nav navbar-nav" routerLinkActive="active">
             <li class="nav-item"><a class="nav-link" routerLink="/collaborateur/reservations">Vos réservations</a></li>
-            <li class="nav-item"><a class="nav-link" id="m2" routerLink="/collaborateur/annonces" (click)="highlight(m2)">Vos annonces</a></li>
-            <li class="nav-item"><a class="nav-link" id="m3" routerLink="/collaborateur/statistiques" (click)="highlight(m3)">Statistiques</a></li>
+            <li class="nav-item"><a class="nav-link" id="m2" routerLink="/collaborateur/annonces" (click)="highlight('m2')">Vos annonces</a></li>
+            <li class="nav-item"><a class="nav-link" id="m3" routerLink="/collaborateur/statistiques" (click)="highlight('m3')">Statistiques</a></li>
             <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/chauffeur/occupation">Occupation</a></li>
             <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/chauffeur/planning">Planning</a></li>
             <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/admin/chauffeurs">Chauffeurs</a></li>
