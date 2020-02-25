@@ -20,6 +20,7 @@ import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
 import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
+import { UrlValidatorDirective } from './validators/url-validator.directive';
 
 
 
@@ -51,7 +52,8 @@ const routes: Routes = [
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    CreerAnnoncesComponent
+    CreerAnnoncesComponent,
+    UrlValidatorDirective
   ],
   imports: [
     BrowserModule,
