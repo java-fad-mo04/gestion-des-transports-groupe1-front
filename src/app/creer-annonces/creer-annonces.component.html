@@ -1,3 +1,4 @@
+
 <div coutainer px-3>
   <div classe="row">
     <div class="col-4">
@@ -16,11 +17,11 @@
         <tr>
           <td>
             <div class="countainer-fluid">
+
               <div class="row px-3 pt-3">
                 <div class="col-3"><label for="depart">Adresse de depart</label></div>
-                <div class="col-6"><input type="text" class="form-control" id="depart"
-                  [(ngModel)]="nouvelleResa.depart" name="depart" required #etatDepart="ngModel"
-                  required>
+                <div class="col-6"><input type="text" class="form-control" id="depart" [(ngModel)]="nouvelleResa.depart"
+                    name="depart" required #etatDepart="ngModel" required>
 
                   <div class="invalid-feedback" *ngIf="etatDepart.invalid && etatDepart.dirty">Vous devez saisir une
                     adresse
@@ -65,12 +66,11 @@
         <tr>
           <td>
             <div class="countainer-fluid">
-             <div class="row px-3 pt-3">
+              <div class="row px-3 pt-3">
                 <div class="col-3"><label for="depart">Immatriculation</label></div>
                 <div class="col-6">
-                  <input type="text" class="form-control" id="immatriculation"
-                    [(ngModel)]="veh.immatriculation" name="immatriculation" required
-                    #etatImmatriculation="ngModel" required>
+                  <input type="text" class="form-control" id="immatriculation" [(ngModel)]="veh.immatriculation"
+                    name="immatriculation" required #etatImmatriculation="ngModel" required>
                   <div class="invalid-feedback" *ngIf="etatImmatriculation.invalid && etatImmatriculation.dirty">Vous
                     devez saisir une
                     immatriculation
@@ -79,8 +79,8 @@
               </div>
               <div class="row px-3 pt-3">
                 <div class="col-3"><label for="destination">Marque</label></div>
-                <div class="col-6"><input type="text" class="form-control" id="marque"
-                    [(ngModel)]="veh.marque" name="marque" required #etatMarque="ngModel" required>
+                <div class="col-6"><input type="text" class="form-control" id="marque" [(ngModel)]="veh.marque"
+                    name="marque" required #etatMarque="ngModel" required>
                   <div class="invalid-feedback" *ngIf="etatMarque.invalid && etatMarque.dirty">Vous devez saisir une
                     marque
                   </div>
@@ -88,8 +88,8 @@
               </div>
               <div class="row px-3 pt-3">
                 <div class="col-3"><label for="destination">Modèle</label></div>
-                <div class="col-6"><input type="text" class="form-control" id="modele"
-                    [(ngModel)]="veh.modele" name="modele" required #etatModele="ngModel" required>
+                <div class="col-6"><input type="text" class="form-control" id="modele" [(ngModel)]="veh.modele"
+                    name="modele" required #etatModele="ngModel" required>
                   <div class="invalid-feedback" *ngIf="etatModele.invalid && etatModele.dirty">Vous devez saisir un
                     modèle
                   </div>
@@ -97,8 +97,8 @@
               </div>
               <div class="row px-3 pt-3">
                 <div class="col-3"><label for="destination">Nombre de places disponibles</label></div>
-                <div class="col-6"><input type="number" class="form-control" id="nbrPlace"
-                    [(ngModel)]="veh.nombrePlace" name="nbrPlace" required #etatPlace="ngModel" required>
+                <div class="col-6"><input type="number" class="form-control" id="nbrPlace" [(ngModel)]="veh.nombrePlace"
+                    name="nbrPlace" required #etatPlace="ngModel" required>
                   <div class="invalid-feedback" *ngIf="etatPlace.invalid && etatPlace.dirty">Vous devez saisir un nombre
                     de places disponibles
                   </div>
@@ -123,14 +123,25 @@
           <td>
             <div class="countainer-fluid">
               <div class="row px-3 pt-3">
-                <div class="col-3"><label for="date">date</label></div>
-                <div class="col-6"><input type="datetime-local" class="form-control" id="date"
+
+                <div class="col-3"><label for="">date/heure</label></div>
+                <div class="col-3 mx-auto">
+                  <div class="input-group">
+                    <input type="datetime-local" class="form-control" id="date"
                     [(ngModel)]="nouvelleResa.date" name="date" required #etatDate="ngModel" required>
+                  </div>
                   <div class="invalid-feedback" *ngIf="etatDate.invalid && etatDate.dirty">Vous devez saisir une
                     date
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-3 mx-auto">
+                  <ngb-timepicker [(ngModel)]="dateForm" [hourStep]="hourStep" [minuteStep]="minuteStep">
+                  </ngb-timepicker>
+                </div>
+              </div>
+
 
 
 

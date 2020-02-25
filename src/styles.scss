@@ -18,6 +18,16 @@ body {
   background-color:rgb(204, 204, 204)
 }
 
+// barres bleu sombre pour modales
+.gdp-barre3 {
+	font-family: "Arial";
+	font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+	color: #ECECEC;
+	background-color: #3F729B;
+}
+
 // réserver un transport
 .gdp-button1 {
   background-color: #AFBD1F;
@@ -49,4 +59,11 @@ body {
 // alignement à gauche (modal)
 .agauche {
   text-align:left;
+}
+
+
+// highlight du menu (page active)
+.highlightmenu {
+  background-color: #4F82AB;
+  font-weight: bold;
 }

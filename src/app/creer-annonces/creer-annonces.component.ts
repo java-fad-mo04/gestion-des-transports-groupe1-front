@@ -25,7 +25,6 @@ export class CreerAnnoncesComponent implements OnInit {
   veh: Vehicule = new Vehicule();
   col: Collegue;
 
-
   constructor(private _dataService: DataService, private _authSrv: AuthService, private _adresseService: AdresseServiceService) { }
 
   ngOnInit() {
@@ -38,6 +37,6 @@ export class CreerAnnoncesComponent implements OnInit {
     console.log(this.nouvelleResa);
   }
 
-  t
+
 
 }

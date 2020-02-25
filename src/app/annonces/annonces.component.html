@@ -23,7 +23,7 @@
           <table class="container-fluid">
             <tbody>
               <tr>
-                <td colspan="4" class="gdp-barre2">
+                <td colspan="5" class="gdp-barre2">
                   <h3><b>Annonces en cours</b></h3>
                 </td>
               </tr>
@@ -37,7 +37,10 @@
                 <th scope="col">
                   <h4>Destination</h4>
                 </th>
-                <th scope="col" style="text-align: center">nombre de passagers</th>
+                <th scope="col" style="text-align: center">
+                  <h4>Nombre de passagers</h4>
+                </th>
+                <th scope="col"></th>
               </tr>
               <tr *ngFor="let r of annoncesCourantes | async">
 
@@ -45,7 +48,9 @@
                 <td>{{r.depart}}</td>
                 <td>{{r.destination}}</td>
                 <td style="text-align: center">{{r.passagers.length}}</td>
-
+                <td style="text-align: center">
+                  <button class="gdp-button5" (click)="open(r.id)">Annuler</button>
+              </td>
               </tr>
 
             </tbody>
@@ -69,7 +74,10 @@
                 <th scope="col">
                   <h4>Destination</h4>
                 </th>
-                <th scope="col" style="text-align: center">nombre de passagers</th>
+                <th scope="col" style="text-align: center">
+                  <h4>Nombre de passagers</h4>
+                </th>
+
               </tr>
               <tr *ngFor="let r of annoncesHisto | async">
 
@@ -77,6 +85,7 @@
                 <td>{{r.depart}}</td>
                 <td>{{r.destination}}</td>
                 <td style="text-align: center">{{r.passagers.length}}</td>
+
 
               </tr>
 

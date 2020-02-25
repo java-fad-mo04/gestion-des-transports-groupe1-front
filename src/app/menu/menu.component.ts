@@ -42,6 +42,7 @@ export class MenuComponent implements OnInit {
     //alert('highlight');
     //this.backgroundColor = "red";
     //document.getElementById(idm).style.backgroundColor = 'red';
+    //alert(this.style.backgroundColor);
   }
 
 }

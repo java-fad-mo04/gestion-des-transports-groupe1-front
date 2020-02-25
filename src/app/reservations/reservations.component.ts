@@ -6,6 +6,7 @@ import { Collegue } from '../models/Collegue';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbActiveModal, NgbModal, NgbAccordion, NgbPanel } from '@ng-bootstrap/ng-bootstrap';
+import { ConfSupprResaComponent } from '../modals/conf-suppr-resa/conf-suppr-resa.component';
 
 @Component({
   selector: 'app-reservations',

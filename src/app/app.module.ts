@@ -19,9 +19,10 @@ import { VehiculesComponent } from './vehicules/vehicules.component';
 import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
-import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules
+//import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
 import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
-
+import { ConfirmationSupressionComponent } from './modals/confirmation-supression/confirmation-supression.component';
+import { ConfSupprResaComponent } from './modals/conf-suppr-resa/conf-suppr-resa.component'; // Matt : modale de suppression de réservation
 
 
 const routes: Routes = [
@@ -35,8 +36,8 @@ const routes: Routes = [
   { path: 'collaborateur/statistiques', component: StatistiquesComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/chauffeurs', component: ChauffeursComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/vehicules', component: VehiculesComponent, canActivate: [StatutConnecteService] },
-  // Matt : USGDT012 - Admin - Geolocalisation des véhicules
-  { path: 'admin/vehicules/geolocalisation', component: ReserverComponent },
+  // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
+  //{ path: 'admin/vehicules/geolocalisation', component: ReserverComponent },
   { path: 'chauffeur/occupation', component: OccupationComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/planning', component: PlanningComponent, canActivate: [StatutConnecteService] },
   { path: '', redirectTo: '/connexion', pathMatch: 'full' }
@@ -49,15 +50,16 @@ const routes: Routes = [
     TechComponent,
     AuthComponent,
     MenuComponent,
-    ReservationsComponent, // Matt : USGDT012
+    ReservationsComponent, // Matt : USGDT004
     AnnoncesComponent,
     StatistiquesComponent,
     VehiculesComponent,
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    ReserverComponent, // Matt : USGDT012
-    CreerAnnoncesComponent
+    //ReserverComponent, // Matt : USGDT012 (probleme)
+    CreerAnnoncesComponent,
+    ConfirmationSupressionComponent
   ],
   imports: [
     BrowserModule,
@@ -65,14 +67,17 @@ const routes: Routes = [
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    NgbModule
-  ],
+    NgbModule,
+    ],
+
+
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
   }],
   bootstrap: [AppComponent, CreerAnnoncesComponent],
-  exports: [CreerAnnoncesComponent]
+  exports: [CreerAnnoncesComponent, ConfirmationSupressionComponent],
+  entryComponents: [ConfirmationSupressionComponent]
 })
 export class AppModule { }
