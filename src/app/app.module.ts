@@ -21,14 +21,14 @@ import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
 import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
 import { UrlValidatorDirective } from './validators/url-validator.directive';
-
+import { ConfirmationSupressionComponent } from './modals/confirmation-supression/confirmation-supression.component';
 
 
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService] }, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent },
   { path: 'collaborateur/reservations', component: ReservationsComponent, canActivate: [StatutConnecteService] },
-  { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent},
+  { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent, canActivate: [StatutConnecteService]},
   { path: 'collaborateur/annonces', component: AnnoncesComponent, canActivate: [StatutConnecteService] },
   { path: 'collaborateur/statistiques', component: StatistiquesComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/chauffeurs', component: ChauffeursComponent, canActivate: [StatutConnecteService] },
@@ -53,7 +53,8 @@ const routes: Routes = [
     OccupationComponent,
     ChauffeursComponent,
     CreerAnnoncesComponent,
-    UrlValidatorDirective
+    UrlValidatorDirective,
+    ConfirmationSupressionComponent
   ],
   imports: [
     BrowserModule,
@@ -61,14 +62,17 @@ const routes: Routes = [
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    NgbModule
-  ],
+    NgbModule,
+    ],
+
+
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
   }],
   bootstrap: [AppComponent, CreerAnnoncesComponent],
-  exports: [CreerAnnoncesComponent]
+  exports: [CreerAnnoncesComponent, ConfirmationSupressionComponent],
+  entryComponents: [ConfirmationSupressionComponent]
 })
 export class AppModule { }

@@ -30,8 +30,8 @@ export class DataService {
     return this._httpClient.get<Reservation[]>(`${url}reservationsCovoiturage?idPass=${idPass}`);
   }
 
-  filterAnnoncesCovoiturage(filtreResa: Reservation): Observable<Reservation> {
-    return this._httpClient.post<Reservation>(`${url}reservationsCovoiturage`, filtreResa);
+  filterAnnoncesCovoiturage(filtreResa: Reservation): Observable<Reservation[]> {
+    return this._httpClient.post<Reservation[]>(`${url}reservationsCovoiturage`, filtreResa);
   }
 
   ajouterPassager(idCol: number, idResa: number): Observable<void> {
@@ -48,6 +48,13 @@ export class DataService {
 
   creerReservationVehicule(nouvelleResa: Reservation): Observable<void> {
     return this._httpClient.post<void>(`${url}reservationsSociete`, nouvelleResa);
+  }
+  supprimerAnnonce(idResa: number): Observable<void> {
+    return this._httpClient.delete<void>(`${url}reservationsCovoiturage?idResa=${idResa}`);
+  }
+
+  listerAllAnoncesCovoiturage(): Observable<Reservation[]> {
+    return this._httpClient.get<Reservation[]>(`${url}reservationsCovoiturage`);
   }
 
   listerVehiculesSociete(): Observable<Vehicule[]> {

@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Confirmation de la supression de l'annonce</h4>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p><strong>Voulez-vous vraiment supprimer cette annonce </strong></p>
+  <p>
+  <span class="text-danger">Cette supression supprimera defenitivement l'annonce.</span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Annuler</button>
+  <button type="button" class="btn btn-danger" (click)="modal.close('Ok')">Confirmer la supression</button>
+</div>

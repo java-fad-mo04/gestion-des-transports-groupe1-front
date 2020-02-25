@@ -38,6 +38,7 @@
                   <h4>Destination</h4>
                 </th>
                 <th scope="col" style="text-align: center">nombre de passagers</th>
+                <th scope="col" style="text-align: center"></th>
               </tr>
               <tr *ngFor="let r of annoncesCourantes | async">
 
@@ -45,7 +46,10 @@
                 <td>{{r.depart}}</td>
                 <td>{{r.destination}}</td>
                 <td style="text-align: center">{{r.passagers.length}}</td>
+                <td><button class="btn btn-danger mr-2" (click)="open(r.id)">
+                  <div>Annuler</div>
 
+                </button></td>
               </tr>
 
             </tbody>
@@ -70,6 +74,7 @@
                   <h4>Destination</h4>
                 </th>
                 <th scope="col" style="text-align: center">nombre de passagers</th>
+
               </tr>
               <tr *ngFor="let r of annoncesHisto | async">
 
@@ -77,6 +82,7 @@
                 <td>{{r.depart}}</td>
                 <td>{{r.destination}}</td>
                 <td style="text-align: center">{{r.passagers.length}}</td>
+
 
               </tr>
 
