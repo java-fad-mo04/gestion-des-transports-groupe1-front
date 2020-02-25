@@ -59,8 +59,6 @@
               </tr>
               <tr *ngFor="let r of reservationsCourantes | async">
 
-<<<<<<< HEAD
-
                   <th scope="row">{{r.date | date:'dd/MM/yyy HH:mm'}}</th>
                   <td>{{r.depart}}</td>
                   <td>{{r.destination}}</td>
@@ -97,7 +95,8 @@
                   &nbsp;&nbsp;&nbsp;
 
                   <button type="button" ngbAutofocus class="gdp-button5" mdbWavesEffect (click)="open(r.id)">annuler</button>
-=======
+
+                  <!--
                 <th scope="row">{{r.date | date:'dd/MM/yyy HH:mm'}}</th>
                 <td>{{r.depart}}</td>
                 <td>{{r.destination}}</td>
@@ -105,7 +104,8 @@
 
                   <button type="button" mdbBtn class="gdp-button2" rounded="true" mdbWavesEffect
                     (click)="open()">détail</button>
->>>>>>> 0ab98c586a376a9c0665c66a61692257f7faf509
+                    -->
+
 
                 </td>
 
@@ -136,17 +136,13 @@
               </tr>
               <tr *ngFor="let r of reservationsHisto | async">
 
-<<<<<<< HEAD
+
                   <th scope="row">{{r.date | date:'dd/MM/yyy HH:mm'}}</th>
                   <td>{{r.depart}}</td>
                   <td>{{r.destination}}</td>
                   <td style="text-align: center"><button type="button" class="gdp-button2" rounded="true"
                       mdbWavesEffect>détail</button></td>
-=======
-                <th scope="row">{{r.date | date:'dd/MM/yyy HH:mm'}}</th>
-                <td>{{r.depart}}</td>
-                <td>{{r.destination}}</td>
->>>>>>> 0ab98c586a376a9c0665c66a61692257f7faf509
+
 
               </tr>
 
