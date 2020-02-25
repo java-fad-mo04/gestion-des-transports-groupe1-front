@@ -37,7 +37,9 @@ export class AuthComponent implements OnInit {
 
 
         // en cas d'erreur, affichage d'un message d'erreur
-        err => this.err = true
+        err => {
+          return this.err = true;
+        }
       );
   }
 
