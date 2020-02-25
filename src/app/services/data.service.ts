@@ -39,7 +39,7 @@ export class DataService {
   }
 
   creerAnnonceCovoiturage(idCol: number, nouvelleResa: Reservation): Observable<void> {
-    return this._httpClient.post<void>(`${url}reservationsCovoiturage?idCol=${idCol}`, nouvelleResa);
+    return this._httpClient.post<void>(`${url}reservationsCovoiturage?idCol=${idCol}`, nouvelleResa, httpOptions);
   }
 
   listerReservationsVehicule(idCol: number): Observable<Reservation[]> {
@@ -50,7 +50,7 @@ export class DataService {
     return this._httpClient.post<void>(`${url}reservationsSociete`, nouvelleResa);
   }
   supprimerAnnonce(idResa: number): Observable<void> {
-    return this._httpClient.delete<void>(`${url}reservationsCovoiturage?idResa=${idResa}`);
+    return this._httpClient.delete<void>(`${url}reservationsCovoiturage?idResa=${idResa}`, httpOptions);
   }
 
   listerAllAnoncesCovoiturage(): Observable<Reservation[]> {
