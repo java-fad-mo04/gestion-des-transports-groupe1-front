@@ -1,0 +1,18 @@
+<div class="gdp-barre3">
+  <h4 class="modal-title gdp-barre3" id="modal-title">Confirmation de la suppression de l'annonce</h4>
+  <!--
+  <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  -->
+</div>
+<div class="modal-body">
+  <p><strong>Voulez-vous vraiment supprimer cette annonce ?</strong></p>
+  <p>
+  <span class="text-danger">Cette suppression effacera définitivement l'annonce !</span>
+  </p>
+</div>
+<div class="modal-footer gdp-barre2">
+  <button type="button" class="gdp-button2" (click)="modal.dismiss('cancel click')">Annuler</button>
+  <button type="button" class="gdp-button5" (click)="modal.close('Ok')">Confirmer la suppression</button>
+</div>

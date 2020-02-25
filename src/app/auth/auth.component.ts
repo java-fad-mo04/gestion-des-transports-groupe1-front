@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Collegue} from "./auth.domains";
-import {AuthService} from "./auth.service";
-import {Router} from "@angular/router";
+import {Collegue} from './auth.domains';
+import {AuthService} from './auth.service';
+import {Router} from '@angular/router';
 
 /**
  * Formulaire d'authentification.
@@ -37,8 +37,31 @@ export class AuthComponent implements OnInit {
 
 
         // en cas d'erreur, affichage d'un message d'erreur
-        err => this.err = true
+        err => {
+          return this.err = true;
+        }
       );
   }
+
+
+  remplissageAuto(rrole: string) {
+
+    if (rrole == 'admin') {
+        document.getElementById('defaultForm-email').value = 'admin@dev.fr';
+        
+    }
+    else if (rrole == 'chauffeur') {
+        document.getElementById('defaultForm-email').value = 'chauffeur@dev.fr';
+    }
+    else {
+        document.getElementById('defaultForm-email').value = 'user@dev.fr';
+    }
+
+    document.getElementById('defaultForm-pass').value = 'superpass';
+
+
+  }
+
+
 
 }
