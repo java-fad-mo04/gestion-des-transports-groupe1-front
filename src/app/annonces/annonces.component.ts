@@ -36,6 +36,8 @@ export class AnnoncesComponent implements OnInit {
     .then(result => {
       if (result === 'Ok') {
         this._dataService.supprimerAnnonce(id).subscribe();
+        this.annoncesCourantes = this._dataService.listerAnnoncesCovoiturage(this.col.id).pipe(
+          map(an => an.filter( a => new Date(a.date).getTime() >= Date.now() )));
       }
     });
 
