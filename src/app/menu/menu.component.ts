@@ -21,9 +21,8 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.collegueConnecte = this._authSrv.collegueConnecteObs;
     this.collegueConnecte.subscribe(col => {
-      this.listeRoles = col.roles; console.log(col);
+      this.listeRoles = col.roles;
     });
-    console.log(this.listeRoles);
   }
 
   // Matt : nouvelle fonction de test si la personne a un role ou pas

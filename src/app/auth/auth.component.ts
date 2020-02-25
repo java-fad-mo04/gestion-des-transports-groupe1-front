@@ -43,4 +43,25 @@ export class AuthComponent implements OnInit {
       );
   }
 
+
+  remplissageAuto(rrole: string) {
+
+    if (rrole == 'admin') {
+        document.getElementById('defaultForm-email').value = 'admin@dev.fr';
+        
+    }
+    else if (rrole == 'chauffeur') {
+        document.getElementById('defaultForm-email').value = 'chauffeur@dev.fr';
+    }
+    else {
+        document.getElementById('defaultForm-email').value = 'user@dev.fr';
+    }
+
+    document.getElementById('defaultForm-pass').value = 'superpass';
+
+
+  }
+
+
+
 }

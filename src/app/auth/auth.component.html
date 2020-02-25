@@ -24,15 +24,12 @@
     <form>
       <div class="md-form">
         <i class="fa fa-envelope prefix grey-text"></i>
-        <input type="text" [validateSuccess]="false" data-error="Une adresse email est requise" id="defaultForm-email" class="form-control" name="email" mdbInputDirective [(ngModel)]="collegue.email" required>
-        <label for="defaultForm-email">Email</label>
+        <input type="text" placeholder="Email" [validateSuccess]="false" data-error="Une adresse email est requise" id="defaultForm-email" class="form-control" name="email" mdbInputDirective [(ngModel)]="collegue.email" required>
       </div>
 
       <div class="md-form">
         <i class="fa fa-lock prefix grey-text"></i>
-        <input type="password" id="defaultForm-pass" [validateSuccess]="false" data-error="Un mot de passe est requis"
-          name="motDePasse" class="form-control" mdbInputDirective [(ngModel)]="collegue.motDePasse" required>
-        <label for="defaultForm-pass">Mot de passe</label>
+        <input type="password" placeholder="Mot de passe" id="defaultForm-pass" [validateSuccess]="false" data-error="Un mot de passe est requis" name="motDePasse" class="form-control" mdbInputDirective [(ngModel)]="collegue.motDePasse" required>
       </div>
 
       <div class="text-center">

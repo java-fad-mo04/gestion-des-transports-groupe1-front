@@ -20,6 +20,7 @@ import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
 //import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
+import {CreerReservationsComponent} from './creer_reservations/creer_reservations.component';
 import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
 import { UrlValidatorDirective } from './validators/url-validator.directive';
 import { ConfirmationSupressionComponent } from './modals/confirmation-supression/confirmation-supression.component';
@@ -42,7 +43,17 @@ const routes: Routes = [
   //{ path: 'admin/vehicules/geolocalisation', component: ReserverComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/occupation', component: OccupationComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/planning', component: PlanningComponent, canActivate: [StatutConnecteService] },
-  { path: '', redirectTo: '/connexion', pathMatch: 'full' }
+  { path: '', redirectTo: '/connexion', pathMatch: 'full' },
+  { path: 'collaborateur/reservations', component: ReservationsComponent },
+  { path: 'collaborateur/reservations/creer', component: CreerReservationsComponent },
+  { path: 'collaborateur/annonces', component: AnnoncesComponent },
+  { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent},
+  { path: 'collaborateur/statistiques', component: StatistiquesComponent },
+  { path: 'admin/chauffeurs', component: ChauffeursComponent },
+  { path: 'admin/vehicules', component: VehiculesComponent },
+  { path: 'chauffeur/occupation', component: OccupationComponent },
+  { path: 'chauffeur/planning', component: PlanningComponent },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' }
 ];
 
 
@@ -62,8 +73,9 @@ const routes: Routes = [
     //ReserverComponent, // Matt : USGDT012 (probleme)
     CreerAnnoncesComponent,
     UrlValidatorDirective, // Audrey : validation url photo
-    ConfirmationSupressionComponent
-
+    ConfirmationSupressionComponent,
+    CreerReservationsComponent,
+    CreerAnnoncesComponent
   ],
   imports: [
     BrowserModule,
