@@ -7,7 +7,7 @@
 <br> &nbsp; <br>
 
 
-<ngb-accordion [closeOthers]="true" >
+<ngb-accordion [closeOthers]="true">
   <ngb-panel id="static-1" title="Covoiturage">
     <ng-template ngbPanelContent>
       <table class="table table-striped table-bordered table-sm align-middle container-fluid">
@@ -23,7 +23,7 @@
                 <table class="container-fluid">
                   <tbody>
 
-                      <h3><b>Critères</b></h3>
+                    <h3><b>Critères</b></h3>
                     <br>
 
                     <!-- Grid row -->
@@ -31,9 +31,12 @@
                       <!-- Default input -->
                       <label for="adresseDepart" class="col-sm-2 col-form-label">Adresse de départ</label>
                       <div class="col">
-                        <input (keyup)="creerResaCovoiturage()" mdbInput type="text" class="form-control" id="inputAdresseDepart" [(ngModel)]="nouvelleResaCovoiturage.depart" name="adresseDepart"required #etatAdresseDepart="ngModel">
+                        <input (keyup)="creerResaCovoiturageFiltreDepart()" mdbInput type="text" class="form-control"
+                          id="inputAdresseDepart" [(ngModel)]="depart" name="adresseDepart" required
+                          #etatAdresseDepart="ngModel">
 
-                        <div class="invalid-feedback" *ngIf="etatAdresseDepart.invalid && etatAdresseDepart.dirty">Vous devez saisir une
+                        <div class="invalid-feedback" *ngIf="etatAdresseDepart.invalid && etatAdresseDepart.dirty">Vous
+                          devez saisir une
                           adresse de départ
                         </div>
                       </div>
@@ -41,10 +44,13 @@
                       <!-- Default input -->
                       <label for="adresseDestination" class="col-sm-2 col-form-label">Adresse de destination</label>
                       <div class="col">
-                        <input (keyup)="creerResaCovoiturage()" mdbInput type="text" class="form-control" id="inputAdresseDestination"[(ngModel)]="nouvelleResaCovoiturage.destination" name="adresseDepart"required #etatAdresseDestination="ngModel">
+                        <input (keyup)="creerResaCovoiturageFiltreDestination()" mdbInput type="text"
+                          class="form-control" id="inputAdresseDestination" [(ngModel)]="destination"
+                          name="adresseDepart" required #etatAdresseDestination="ngModel">
                       </div>
 
-                      <div class="invalid-feedback" *ngIf="etatAdresseDestination.invalid && etatAdresseDestination.dirty">Vous devez saisir une
+                      <div class="invalid-feedback"
+                        *ngIf="etatAdresseDestination.invalid && etatAdresseDestination.dirty">Vous devez saisir une
                         adresse de destination
                       </div>
                     </div>
@@ -54,10 +60,11 @@
 
                     </div>
                     <div class="form-group row">
-                      <!-- Default input -->
                       <label for="dateDepart" class="col-sm-2 col-form-label">Date de départ</label>
                       <div class="col-sm-10">
-                        <input (keyup)="creerResaCovoiturage()" mdbInput type="datetime-local" class="form-control" id="inputDate"  [(ngModel)]="nouvelleResaCovoiturage.date" name="dateDepart" required #etatDate="ngModel">
+                        <input   (blur)="creerResaCovoiturageFiltreDate()" input type="date"
+                          id="inputDate" [(ngModel)]="date" name="dateDepart" required
+                          #etatDate="ngModel">
                         <div class="invalid-feedback" *ngIf="etatDate.invalid && etatDate.dirty">Vous devez saisir une
                           date
                         </div>
@@ -71,7 +78,7 @@
                   <tbody>
 
 
-                        <h3><b>Covoiturage</b></h3>
+                    <h3><b>Covoiturage</b></h3>
 
                     <br>
                     <tr>
@@ -100,15 +107,44 @@
                     </tr>
                     <tr *ngFor="let newCovoit of listeCovoiturage | async">
 
-                        <th scope="row">{{newCovoit.date | date:'dd/MM/yyy HH:mm'}}</th>
-                        <td>{{newCovoit.depart}}</td>
-                        <td>{{newCovoit.destination}}</td>
-                        <td>{{newCovoit.vehicule}}</td>
-                        <td>{{newCovoit.chauffeur}}</td>
-                        <td>{{newCovoit.passagers}}</td>
-                        <td style="text-align: center">
+                      <th scope="row">{{newCovoit.date | date:'dd/MM/yyy HH:mm'}}</th>
+                      <td>{{newCovoit.depart}}</td>
+                      <td>{{newCovoit.destination}}</td>
+                      <td>{{newCovoit.vehicule.modele}} {{newCovoit.vehicule.marque}}</td>
+                      <td>{{newCovoit.chauffeur.prenom}} {{newCovoit.chauffeur.nom.toUpperCase()}}</td>
+                      <td>{{newCovoit.vehicule.nombrePlace}}</td>
+                      <td style="text-align: center"><button type="button" mdbBtn class="gdp-button2" rounded="true"
+                          mdbWavesEffect (click)="basicModal.show()">Réserver</button>
+                      </td>
 
-                        </td>
+                      <!-- modale avec informations détaillées de la réservation -->
+                      <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close pull-right" aria-label="Close"
+                                (click)="basicModal.hide()">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                              <h4 class="modal-title w-100" id="myModalLabel">Détails du covoiturage</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Départ : {{newCovoit.depart}}</p>
+                              <p>Destination :{{newCovoit.destination}}</p>
+                              <p>Date/Heure :{{newCovoit.date}}</p>
+                              <p>Véhicule :{{newCovoit.vehicule}}</p>
+                              <p>Chauffeur :{{newCovoit.chauffeur.prenom}} {{newCovoit.chauffeur.nom}}</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
+                                (click)="basicModal.hide()"  mdbWavesEffect>Annuler</button>
+                              <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
+                                (click)="ajouterPassagerCovoiturage(newCovoit.id); basicModal.hide()" mdbWavesEffect>Confirmer</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
                     </tr>
 
@@ -124,20 +160,26 @@
   </ngb-panel>
   <ngb-panel id="static-2" title="Véhicules de société">
     <ng-template ngbPanelContent>
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+      officia
+      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+      tempor,
+      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+      helvetica,
       craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
       occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
       labore sustainable VHS.
     </ng-template>
   </ngb-panel>
 
-  <ngb-panel id="static-3" title="Véhicule avec chauffeur privé" >
+  <ngb-panel id="static-3" title="Véhicule avec chauffeur privé">
     <ng-template ngbPanelContent>
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+      officia
+      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+      tempor,
+      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+      helvetica,
       craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
       occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
       labore sustainable VHS.
