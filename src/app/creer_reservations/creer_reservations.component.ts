@@ -7,6 +7,8 @@ import { AuthService } from '../auth/auth.service';
 import { Collegue } from '../models/Collegue';
 
 
+
+
 @Component({
   selector: 'app-creer_reservations',
   templateUrl: './creer_reservations.component.html',
@@ -20,7 +22,9 @@ export class CreerReservationsComponent implements OnInit {
   destination: string = "";
   date: Date;
   collegue: Collegue;
+
   passagers: Collegue[];
+
   listeCovoiturage: Observable<Reservation[]>;
   covoituragesReserves: Observable<Reservation[]>;
   resaOk = false;
@@ -40,32 +44,33 @@ export class CreerReservationsComponent implements OnInit {
   creerResaCovoiturageFiltreDepart() {
 
     this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage().pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
-
   }
 
   creerResaCovoiturageFiltreDestination() {
-    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage()
-      .pipe(map(d => d.filter(e => e.destination.startsWith(this.destination))));
+    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage().pipe(map(d => d.filter(e => e.destination.startsWith(this.destination))));
   }
 
   creerResaCovoiturageFiltreDate() {
-    this.messageError = null;
-    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage().pipe(map(d => d.filter(e => new Date(e.date) === this.date)));
+    console.log(this.date);
+
+    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage().pipe(map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
   }
   ajouterPassagerCovoiturage(idResa: number) {
-    this.messageError = null;
-    this.messageOk = null;
-    this._dataService.ajouterPassager(this.collegue.id, idResa).subscribe(
-      ok => {
-        this.resaOk = true;
-        this.messageOk  = 'Reservation acceptée';
-      },
-    error => {
-      this.err = true;
-      this.messageError = `Vous êtes déja présent sur ce covoiturage`;
+    this._dataService.ajouterPassager(this.collegue.id, idResa).subscribe();
+  }
 
+  filtre() {
+    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage();
+
+    if (this.depart != "") {
+      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
     }
-  );
-  this.messageError = null;
+    if (this.destination != "") {
+      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.destination.startsWith(this.destination))));
+    }
+    if (this.date != null) {
+      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
+    }
+
   }
 }

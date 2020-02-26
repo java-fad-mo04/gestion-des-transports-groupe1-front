@@ -32,9 +32,8 @@
                       <!-- Default input -->
                       <label for="adresseDepart" class="col-sm-2 col-form-label">Adresse de départ</label>
                       <div class="col">
-                        <input (keyup)="creerResaCovoiturageFiltreDepart()" mdbInput type="text" class="form-control"
-                          id="inputAdresseDepart" [(ngModel)]="depart" name="adresseDepart" required
-                          #etatAdresseDepart="ngModel">
+                        <input (keyup)="filtre()" mdbInput type="text" class="form-control" id="inputAdresseDepart"
+                          [(ngModel)]="depart" name="adresseDepart" required #etatAdresseDepart="ngModel">
 
                         <div class="invalid-feedback" *ngIf="etatAdresseDepart.invalid && etatAdresseDepart.dirty">Vous
                           devez saisir une
@@ -45,9 +44,8 @@
                       <!-- Default input -->
                       <label for="adresseDestination" class="col-sm-2 col-form-label">Adresse de destination</label>
                       <div class="col">
-                        <input (keyup)="creerResaCovoiturageFiltreDestination()" mdbInput type="text"
-                          class="form-control" id="inputAdresseDestination" [(ngModel)]="destination"
-                          name="adresseDepart" required #etatAdresseDestination="ngModel">
+                        <input (keyup)="filtre()" mdbInput type="text" class="form-control" id="inputAdresseDestination"
+                          [(ngModel)]="destination" name="adresseDepart" required #etatAdresseDestination="ngModel">
                       </div>
 
                       <div class="invalid-feedback"
@@ -63,8 +61,10 @@
                     <div class="form-group row">
                       <label for="dateDepart" class="col-sm-2 col-form-label">Date de départ</label>
                       <div class="col-sm-10">
-                        <input (blur)="creerResaCovoiturageFiltreDate()" input type="date" id="inputDate"
-                          [(ngModel)]="date" name="dateDepart" required #etatDate="ngModel">
+
+                        <input (change)="filtre()" input type="date" id="inputDate" [(ngModel)]="date" name="dateDepart"
+                          required #etatDate="ngModel">
+
                         <div class="invalid-feedback" *ngIf="etatDate.invalid && etatDate.dirty">Vous devez saisir une
                           date
                         </div>
@@ -160,6 +160,7 @@
                               <button type="button" routerLink="/collaborateur/reservations" mdbBtn color="secondary" class="waves-light"
                                 aria-label="Close" (click)="ajouterPassagerCovoiturage(newCovoit.id); basicModal.hide()"
                                  mdbWavesEffect>Confirmer</button>
+
 
                             </div>
                           </div>
