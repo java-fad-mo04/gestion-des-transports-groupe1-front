@@ -5,5 +5,6 @@ export class Vehicule {
   public immatriculation?: string;
   public statut?: string;
   public categorie?: string;
-  public nombrePlace?: string;
+  public urlPhoto?: string;
+  public nombrePlace?: number;
 }

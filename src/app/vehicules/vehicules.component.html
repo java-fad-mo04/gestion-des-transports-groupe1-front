@@ -1,1 +1,129 @@
-<p>vehicules works!</p>
+<p>&nbsp;</p>
+
+<h1>Véhicules</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-4">Filtre</div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-2 offset-1"><label for="r_immatriculation">Immatriculation</label></div>
+    <div class="col-12 col-md-3"><input type="text" class="form-control" id="r_immatriculation" name="r_immatriculation"
+        [value]="immatriculationSearch" (change)="rechercheImmatriculationMarque('immatriculation')" /></div>
+
+  </div>
+  <div class="row pt-1">
+    <div class="col-12 col-md-2 offset-1"><label for="r_marque">Marque</label></div>
+    <div class="col-12 col-md-3">
+      <select name="r_marque" id="r_marque" class="form-control" (change)="rechercheImmatriculationMarque('marque')">
+        <option value=""></option>
+        <option *ngFor="let marque of listeMarques" value="{{marque}}">{{marque}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row pt-1">
+    <div class="col-12 text-right">
+      <button type="button" mdbBtn class="gdp-button1" rounded="true" routerLink="/admin/vehicules" mdbWavesEffect
+        (click)="basicModal.show()">Ajouter un véhicule</button>
+
+      <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header gdp-barre1">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title w-100 text-left" id="myModalLabel">Véhicule</h4>
+            </div>
+            <div class="modal-body text-left">
+              <form #etatForm="ngForm">
+                <div class="row px-3 pt-2">
+                  <div class="col-3"><label for="immatriculation">Immatriculation</label></div>
+                  <div class="col-9"><input type="text" class="form-control" id="immatriculation" name="immatriculation"
+                      minlength=9 maxlength=9 [(ngModel)]="nouveauVehicule.immatriculation"
+                      #etatImmatriculation="ngModel" pattern="^[A-Z]{1,2}-[0-9]{1,3}-[A-Z]{1,2}$" required>
+                    <p *ngIf="etatImmatriculation.invalid && etatImmatriculation.dirty">Vous devez saisir une
+                      immatriculation de type XX-NNN-XX (EX: DE-456-TP)</p>
+                  </div>
+                </div>
+                <div class="row px-3 pt-2">
+                  <div class="col-3"><label for="marque">Marque</label></div>
+                  <div class="col-9"><input type="text" class="form-control" id="marque" name="marque"
+                      [(ngModel)]="nouveauVehicule.marque" #etatMarque="ngModel" required>
+                    <p *ngIf="etatMarque.invalid && etatMarque.dirty">Vous devez saisir une marque</p>
+                  </div>
+                </div>
+                <div class="row px-3 pt-2">
+                  <div class="col-3"><label for="modele">Modèle</label></div>
+                  <div class="col-9"><input type="text" class="form-control" id="modele" name="modele"
+                      [(ngModel)]="nouveauVehicule.modele" #etatModele="ngModel" required>
+                    <p *ngIf="etatModele.invalid && etatModele.dirty">Vous devez saisir un modèle</p>
+                  </div>
+                </div>
+                <div class="row px-3 pt-2">
+                  <div class="col-3"><label for="categorie">Catégorie</label></div>
+                  <div class="col-9">
+                    <select name="categorie" id="categorie" class="form-control" [(ngModel)]="nouveauVehicule.categorie"
+                      #etatModele="ngModel" required>
+                      <option value=""></option>
+                      <option *ngFor="let marque of listeCategorie" value="{{marque}}">{{marque}}</option>
+                    </select>
+                    <p *ngIf="etatModele.invalid && etatModele.dirty">Vous devez saisir une catégorie</p>
+                  </div>
+                </div>
+
+                <div class="row px-3 pt-2">
+                  <div class="col-3"><label for="urlPhoto">Photo</label></div>
+                  <div class="col-9"><input type="text" appUrlValidator class="form-control" id="urlPhoto"
+                      name="urlPhoto" [(ngModel)]="nouveauVehicule.urlPhoto" #etatModele="ngModel" required>
+                    <p *ngIf="etatModele.invalid && etatModele.dirty">Vous devez saisir une url de photo commençant par
+                      'http'</p>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer gdp-barre2">
+              <button type="button" class="gdp-button2" aria-label="Close" (click)="basicModal.hide()"
+                mdbWavesEffect>Annuler</button>
+              <button type="button" name="creer" class="gdp-button1 btn-rounded waves-effect"
+                (click)="validForm(etatForm)" [disabled]="etatForm.invalid">Ajouter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-3">
+    <div class="col-12 col-md-3 text-center" *ngFor="let v of vehiculesSociete | async">
+      <div class="row">
+        <div class="col-12"><img src="{{v.urlPhoto}}" width="100%" /></div>
+        <div class="col-12">{{v.immatriculation.toUpperCase()}}</div>
+        <div class="col-12">{{v.marque}} - {{v.modele}}</div>
+        <div class="col-12">{{v.categorie}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal HTML -->
+<div id="modalSuccess" class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': displayModal}">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+          <i class="material-icons"></i>
+        </div>
+        <h4 class="modal-title">Création de véhicule de société</h4>
+      </div>
+      <div class="modal-body">
+      <p class="text-center">{{ messageNotif }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn {{boutonNotif}} btn-block" data-dismiss="modal" (click)="onCloseConfirm()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

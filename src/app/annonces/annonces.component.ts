@@ -5,6 +5,8 @@ import { Collegue } from '../models/Collegue';
 import { map } from 'rxjs/operators';
 import { Reservation } from '../models/Reservation';
 import { Observable } from 'rxjs';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationSupressionComponent } from '../modals/confirmation-supression/confirmation-supression.component';
 
 @Component({
   selector: 'app-annonces',
@@ -15,8 +17,9 @@ export class AnnoncesComponent implements OnInit {
   col: Collegue;
   annoncesCourantes: Observable<Reservation[]>;
   annoncesHisto: Observable<Reservation[]>;
+  res: string;
 
-  constructor(private _authSrv: AuthService, private _dataService: DataService) { }
+  constructor(private _authSrv: AuthService, private _dataService: DataService, private _modalService: NgbModal) { }
 
   ngOnInit() {
 
@@ -28,5 +31,16 @@ export class AnnoncesComponent implements OnInit {
         map(an => an.filter( a => new Date(a.date).getTime() < Date.now() )));
 
   }
+  open(id: number) {
+    const modalRef = this._modalService.open(ConfirmationSupressionComponent).result
+    .then(result => {
+      if (result === 'Ok') {
+        this._dataService.supprimerAnnonce(id).subscribe();
+        this.annoncesCourantes = this._dataService.listerAnnoncesCovoiturage(this.col.id).pipe(
+          map(an => an.filter( a => new Date(a.date).getTime() >= Date.now() )));
+      }
+    });
 
+
+  }
 }

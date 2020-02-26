@@ -1,6 +1,7 @@
+<img width="500" height="242" src="assets/images/gdt04a.jpg">
 <mdb-card class="animated zoomIn">
-  <mdb-card-header class="primary-color white-text">
-    <h4 class="text-center">GDT - Gestion Du Transport - Authentification</h4>
+  <mdb-card-header class="gdp-barre1">
+    <h4 class="text-right">Authentification</h4>
   </mdb-card-header>
   <mdb-card-body>
     <mdb-card>
@@ -9,10 +10,11 @@
           <h4>Utilisateurs</h4>
         </mdb-card-title>
         <mdb-card-text>
-          Deux utilisateurs sont créés par défaut :
+          Trois profils d'utilisateurs :
           <ul>
-            <li>admin@dev.fr / superpass / ROLE_ADMINISTRATEUR, ROLE_UTILISATEUR</li>
-            <li>user@dev.fr / superpass / ROLE_UTILISATEUR</li>
+            <li><a (click)="remplissageAuto('admin')">admin@dev.fr</a> / superpass / ROLE_ADMINISTRATEUR, ROLE_UTILISATEUR</li>
+            <li><a (click)="remplissageAuto('chauffeur')">chauffeur@dev.fr</a> / superpass / ROLE_CHAUFFEUR, ROLE_UTILISATEUR</li>
+            <li><a (click)="remplissageAuto('user')">user@dev.fr</a> / superpass / ROLE_UTILISATEUR</li>
           </ul>
 
         </mdb-card-text>
@@ -22,22 +24,18 @@
     <form>
       <div class="md-form">
         <i class="fa fa-envelope prefix grey-text"></i>
-        <input type="text" [validateSuccess]="false" data-error="Une adresse email est requise" id="defaultForm-email" class="form-control" name="email" mdbInputDirective [(ngModel)]="collegue.email" required>
-        <label for="defaultForm-email">Email</label>
+        <input type="text" placeholder="Email" [validateSuccess]="false" data-error="Une adresse email est requise" id="defaultForm-email" class="form-control" name="email" mdbInputDirective [(ngModel)]="collegue.email" required>
       </div>
 
       <div class="md-form">
         <i class="fa fa-lock prefix grey-text"></i>
-        <input type="password" id="defaultForm-pass" [validateSuccess]="false" data-error="Un mot de passe est requis"
-          name="motDePasse" class="form-control" mdbInputDirective [(ngModel)]="collegue.motDePasse" required>
-        <label for="defaultForm-pass">Mot de passe</label>
+        <input type="password" placeholder="Mot de passe" id="defaultForm-pass" [validateSuccess]="false" data-error="Un mot de passe est requis" name="motDePasse" class="form-control" mdbInputDirective [(ngModel)]="collegue.motDePasse" required>
       </div>
 
       <div class="text-center">
-        <input type="submit" mdbBtn color="primary" sclass="waves-light" mdbWavesEffect value="Se connecter"
-          (click)="connecter()">
+        <input type="submit" mdbBtn class="gdp-button1" mdbWavesEffect value="Se connecter" (click)="connecter()">
       </div>
-      <div *ngIf="err" class="text-danger">
+      <div *ngIf="err" class="text-danger text-center">
         Oops, les informations saisies ne permettent pas de vous authentifier.
       </div>
     </form>

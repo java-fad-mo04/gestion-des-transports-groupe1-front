@@ -1,12 +1,12 @@
 <header>
 
 
-<div *ngIf="!(collegueConnecte | async).estAnonyme()" ><app-menu></app-menu>
+<div *ngIf="!(collegueConnecte | async).estAnonyme()" align="end"><app-menu></app-menu>
   <span>Bonjour {{(collegueConnecte | async).prenom}}</span>
   <span>({{(collegueConnecte | async).nom}})</span>
   <a class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</a>
 </div>
-<img width="500" height="242" src="assets/images/gdt04a.jpg">
+
 
 </header>
 <router-outlet></router-outlet>

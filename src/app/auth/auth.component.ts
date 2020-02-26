@@ -37,8 +37,31 @@ export class AuthComponent implements OnInit {
 
 
         // en cas d'erreur, affichage d'un message d'erreur
-        err => this.err = true
+        err => {
+          return this.err = true;
+        }
       );
   }
+
+
+  remplissageAuto(rrole: string) {
+
+    if (rrole == 'admin') {
+      (<HTMLInputElement>document.getElementById('defaultForm-email')).value = 'admin@dev.fr';
+        
+    }
+    else if (rrole == 'chauffeur') {
+      (<HTMLInputElement>document.getElementById('defaultForm-email')).value = 'chauffeur@dev.fr';
+    }
+    else {
+      (<HTMLInputElement>document.getElementById('defaultForm-email')).value = 'user@dev.fr';
+    }
+
+    (<HTMLInputElement>document.getElementById('defaultForm-pass')).value = 'superpass';
+
+
+  }
+
+
 
 }

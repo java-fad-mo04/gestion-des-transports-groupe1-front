@@ -21,8 +21,29 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.collegueConnecte = this._authSrv.collegueConnecteObs;
     this.collegueConnecte.subscribe(col => {
-      this.listeRoles = col.roles; console.log(col);
+      this.listeRoles = col.roles;
     });
-    console.log(this.listeRoles);
   }
+
+  // Matt : nouvelle fonction de test si la personne a un role ou pas
+  hasRole(role: string): boolean {
+
+    //console.log('this.listeRoles : ' + this.listeRoles + ' role : ' + role);
+
+    if (this.listeRoles.indexOf(role) !== -1) {
+      return true;
+    }
+    return false;
+  }
+
+  // Matt : fonction pour mettre en valeur la page où on se trouve dans le menu
+  highlight(idm: string){
+    //alert('highlight');
+    //this.backgroundColor = "red";
+    //document.getElementById(idm).style.backgroundColor = 'red';
+    //alert(this.style.backgroundColor);
+  }
+
 }
+
+
