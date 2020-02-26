@@ -26,6 +26,7 @@ export class ReservationsComponent implements OnInit {
   constructor(private _authSrv: AuthService, private _dataService: DataService, private _modalService: NgbModal) { }
 
   ngOnInit() {
+
     this._authSrv.collegueConnecteObs.subscribe(c => this.col = c);
 
     this.reservationsCourantes = this._dataService.listerReservationsCCovoiturage(this.col.id)

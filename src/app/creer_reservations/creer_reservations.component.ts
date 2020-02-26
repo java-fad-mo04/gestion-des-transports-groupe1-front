@@ -23,12 +23,7 @@ export class CreerReservationsComponent implements OnInit {
   passagers: Collegue[];
 
   listeCovoiturage: Observable<Reservation[]>;
-  covoituragesReserves: Observable<Reservation[]>;
-  resaOk = false;
-  messageError: string;
-  messageOk: string;
-  err: boolean;
-  dejaPresent: boolean;
+
   constructor(private _dataService: DataService, private autth: AuthService) { }
 
 
