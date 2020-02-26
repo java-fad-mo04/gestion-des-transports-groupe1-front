@@ -1,5 +1,6 @@
-import { Collegue } from '../auth/auth.domains';
+
 import { Vehicule } from './Vehicule';
+import { Collegue } from './Collegue';
 
 export class Reservation {
   public id?: number;

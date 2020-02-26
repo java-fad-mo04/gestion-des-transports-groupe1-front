@@ -30,9 +30,6 @@ export class DataService {
     return this._httpClient.get<Reservation[]>(`${url}reservationsCovoiturage?idPass=${idPass}`);
   }
 
-  filterAnnoncesCovoiturage(filtreResa: Reservation): Observable<Reservation[]> {
-    return this._httpClient.post<Reservation[]>(`${url}reservationsCovoiturage`, filtreResa);
-  }
 
   ajouterPassager(idCol: number, idResa: number): Observable<void> {
     return this._httpClient.patch<void>(`${url}reservationsCovoiturage/${idCol}?idResa=${idResa}`, null);
@@ -73,6 +70,9 @@ export class DataService {
 
   creerVehiculeSociete(nouveauVehicule: Vehicule): Observable<void> {
     return this._httpClient.post<void>(`${url}vehiculesSociete/creer`, JSON.stringify(nouveauVehicule) , httpOptions);
+  }
+  supprimerPassager(idCol: number, idResa: number): Observable<void> {
+    return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null);
   }
 
 }

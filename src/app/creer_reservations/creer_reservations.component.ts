@@ -23,17 +23,26 @@ export class CreerReservationsComponent implements OnInit {
   date: Date;
   collegue: Collegue;
 
-  listeCovoiturage: Observable<Reservation[]>;
+  passagers: Collegue[];
 
+  listeCovoiturage: Observable<Reservation[]>;
+  covoituragesReserves: Observable<Reservation[]>;
+  resaOk = false;
+  messageError: string;
+  messageOk: string;
+  err: boolean;
+  dejaPresent: boolean;
   constructor(private _dataService: DataService, private autth: AuthService) { }
 
 
   ngOnInit() {
     this.autth.collegueConnecteObs.subscribe(c => this.collegue = c);
+
   }
 
 
   creerResaCovoiturageFiltreDepart() {
+
     this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage().pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
   }
 
@@ -62,5 +71,6 @@ export class CreerReservationsComponent implements OnInit {
     if (this.date != null) {
       this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
     }
+
   }
 }

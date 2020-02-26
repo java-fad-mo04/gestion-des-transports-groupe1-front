@@ -76,7 +76,8 @@ const routes: Routes = [
     UrlValidatorDirective, // Audrey : validation url photo
     ConfirmationSupressionComponent,
     CreerReservationsComponent,
-    CreerAnnoncesComponent
+    CreerAnnoncesComponent,
+    ConfSupprResaComponent
   ],
   imports: [
     BrowserModule,
@@ -95,8 +96,9 @@ const routes: Routes = [
     multi: true,
   }],
   bootstrap: [AppComponent, CreerAnnoncesComponent],
-  exports: [CreerAnnoncesComponent, ConfirmationSupressionComponent],
-  entryComponents: [ConfirmationSupressionComponent],
+
+  exports: [CreerAnnoncesComponent, ConfirmationSupressionComponent, ConfSupprResaComponent],
+  entryComponents: [ConfirmationSupressionComponent, ConfSupprResaComponent]
 
 })
 export class AppModule { }

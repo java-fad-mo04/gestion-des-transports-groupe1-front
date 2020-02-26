@@ -33,6 +33,7 @@ export class CreerAnnoncesComponent implements OnInit {
   secondStep = 30;
   messageErreur: string;
   messageOk: string;
+  erreur = false;
 
   constructor(private _dataService: DataService, private _authSrv: AuthService, private _adresseService: AdresseServiceService) { }
 
@@ -58,7 +59,8 @@ export class CreerAnnoncesComponent implements OnInit {
       this.messageOk = 'Super !';
     },
     error => {
-      this.messageErreur = `Le collègue n'a pu être créé, DSL :-( Veuillez saisir correctement les champs)`
+      this.messageErreur = `Le collègue n'a pu être créé, DSL :-( Veuillez saisir correctement les champs)`;
+      this.erreur = true;
     });
 
   }
