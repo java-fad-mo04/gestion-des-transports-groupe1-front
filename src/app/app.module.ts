@@ -32,10 +32,8 @@ const routes: Routes = [
   { path: 'connexion', component: AuthComponent },
   // Matt : USGDT004 - Collab - Liste des réservations covoiturage
   { path: 'collaborateur/reservations', component: ReservationsComponent, canActivate: [StatutConnecteService] },
-  { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent, canActivate: [StatutConnecteService]},
   { path: 'collaborateur/annonces', component: AnnoncesComponent, canActivate: [StatutConnecteService] },
   { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent, canActivate: [StatutConnecteService]},
-  { path: 'collaborateur/annonces', component: AnnoncesComponent, canActivate: [StatutConnecteService] },
   { path: 'collaborateur/statistiques', component: StatistiquesComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/chauffeurs', component: ChauffeursComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/vehicules', component: VehiculesComponent, canActivate: [StatutConnecteService] },
@@ -43,17 +41,7 @@ const routes: Routes = [
   //{ path: 'admin/vehicules/geolocalisation', component: ReserverComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/occupation', component: OccupationComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/planning', component: PlanningComponent, canActivate: [StatutConnecteService] },
-  { path: '', redirectTo: '/connexion', pathMatch: 'full' },
-  { path: 'collaborateur/reservations', component: ReservationsComponent },
-  { path: 'collaborateur/reservations/creer', component: CreerReservationsComponent },
-  { path: 'collaborateur/annonces', component: AnnoncesComponent },
-  { path: 'collaborateur/annonces/creer', component: CreerAnnoncesComponent},
-  { path: 'collaborateur/statistiques', component: StatistiquesComponent },
-  { path: 'admin/chauffeurs', component: ChauffeursComponent },
-  { path: 'admin/vehicules', component: VehiculesComponent },
-  { path: 'chauffeur/occupation', component: OccupationComponent },
-  { path: 'chauffeur/planning', component: PlanningComponent },
-  { path: '', redirectTo: '/auth', pathMatch: 'full' }
+  { path: '', redirectTo: '/connexion', pathMatch: 'full' }
 ];
 
 
