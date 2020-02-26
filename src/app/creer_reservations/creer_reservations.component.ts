@@ -27,6 +27,7 @@ export class CreerReservationsComponent implements OnInit {
   messageError: string;
   messageOk: string;
   err: boolean;
+  dejaPresent: boolean;
   constructor(private _dataService: DataService, private autth: AuthService) { }
 
 
@@ -37,7 +38,9 @@ export class CreerReservationsComponent implements OnInit {
 
 
   creerResaCovoiturageFiltreDepart() {
+
     this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage().pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
+
   }
 
   creerResaCovoiturageFiltreDestination() {
