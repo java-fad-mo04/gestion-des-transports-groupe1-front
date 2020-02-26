@@ -27,6 +27,7 @@ import { ConfirmationSupressionComponent } from './modals/confirmation-supressio
 import { ConfSupprResaComponent } from './modals/conf-suppr-resa/conf-suppr-resa.component'; // Matt : modale de suppression de réservation
 
 
+
 const routes: Routes = [
   { path: 'tech', component: TechComponent, canActivate: [StatutConnecteService] }, // /tech accessible uniquement si connecté
   { path: 'connexion', component: AuthComponent },
@@ -87,13 +88,15 @@ const routes: Routes = [
     ],
 
 
-  providers: [{
+  providers: [
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true,
   }],
   bootstrap: [AppComponent, CreerAnnoncesComponent],
   exports: [CreerAnnoncesComponent, ConfirmationSupressionComponent],
-  entryComponents: [ConfirmationSupressionComponent]
+  entryComponents: [ConfirmationSupressionComponent],
+
 })
 export class AppModule { }
