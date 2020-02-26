@@ -82,8 +82,8 @@
                                 <p><b>Départ :</b> {{r.depart}}</p>
                                 <p><b>Destination :</b>{{r.destination}}</p>
                                 <p><b>Date/Heure :</b>{{r.date | date:'dd/MM/yyy HH:mm'}}</p>
-                                <p><b>Véhicule :</b> ------------- </p>
-                                <p><b>Chauffeur :</b> ------------- </p>
+                                <p><b>Véhicule :</b> {{r.vehicule.marque}}-{{r.vehicule.modele}}</p>
+                                <p><b>Chauffeur :</b> {{r.chauffeur.prenom}} {{r.chauffeur.nom | uppercase}} </p>
                         </div>
                         <div class="modal-footer gdp-barre2">
                           <button type="button" class="gdp-button2" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Fermer</button>
