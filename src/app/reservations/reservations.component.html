@@ -2,6 +2,8 @@
   USGDT004 - Collab - liste resa
   USGDT014 - Collab - Annuler un covoiturage
   USGDT016 - Collab - Réserver un véhicule de société avec chauffeur
+  Flavien :
+  USGDT006 - Collab - Liste des réservations vehicules
 -->
 
 <p>&nbsp;</p>
@@ -65,8 +67,7 @@
                       <td style="text-align: center">
 
                         <button type="button" class="gdp-button2" rounded="true" mdbWavesEffect
-                          (click)="basicModal.show()">détail</button>
-
+                          (click)="basicModal.show()">détails</button>
 
 
                         <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
@@ -100,21 +101,8 @@
                         <button type="button" ngbAutofocus class="gdp-button5" mdbWavesEffect
                           (click)="open(r.id)">annuler</button>
 
-                        <!--
-                <th scope="row">{{r.date | date:'dd/MM/yyy HH:mm'}}</th>
-                <td>{{r.depart}}</td>
-                <td>{{r.destination}}</td>
-                <td style="text-align: center">
-
-                  <button type="button" mdbBtn class="gdp-button2" rounded="true" mdbWavesEffect
-                    (click)="open()">détail</button>
-                    -->
-
-
                       </td>
-
                     </tr>
-
                   </tbody>
                 </table>
 
@@ -145,7 +133,7 @@
                       <td>{{r.depart}}</td>
                       <td>{{r.destination}}</td>
                       <td style="text-align: center"><button type="button" class="gdp-button2" rounded="true"
-                          mdbWavesEffect>détail</button></td>
+                          mdbWavesEffect>détails</button></td>
 
 
                     </tr>
@@ -223,9 +211,9 @@
                       <th scope="col">
                         <h4>Modèle</h4>
                       </th>
-                      <th scope="col">
+                      <!--<th scope="col">
                         <h4>Chauffeur</h4>
-                      </th>
+                      </th>-->
 
                     </tr>
                     <tr *ngFor="let r of resaVsocieteCourantes | async">
@@ -235,7 +223,7 @@
                       <td>{{r.vehicule.immatriculation}}</td>
                       <td>{{r.vehicule.marque}}</td>
                       <td>{{r.vehicule.modele}}</td>
-                      <td>{{r.chauffeur}}</td>
+                      <!--<td>{{r.chauffeur}}</td>-->
                     </tr>
 
                   </tbody>
@@ -265,9 +253,9 @@
                       <th scope="col">
                         <h4>Modèle</h4>
                       </th>
-                      <th scope="col">
+                      <!--<th scope="col">
                         <h4>Chauffeur</h4>
-                      </th>
+                      </th>-->
 
                     </tr>
                     <tr *ngFor="let r of resaVsocieteHisto | async">
@@ -277,9 +265,7 @@
                       <td>{{r.vehicule.immatriculation}}</td>
                       <td>{{r.vehicule.marque}}</td>
                       <td>{{r.vehicule.modele}}</td>
-                      <td>{{r.chauffeur.prenom}} {{r.chauffeur.nom}}</td>
-
-
+                      <!--<td>{{r.chauffeur.prenom}} {{r.chauffeur.nom}}</td>-->
                     </tr>
 
                     <tr>
