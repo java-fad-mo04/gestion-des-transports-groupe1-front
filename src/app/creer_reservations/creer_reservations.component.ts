@@ -60,7 +60,9 @@ export class CreerReservationsComponent implements OnInit {
   }
 
   filtre() {
-    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage();
+    if (this.depart != "" || this.depart != "" || this.date != null) {
+      this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage();
+    }
 
     if (this.depart != "") {
       this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
