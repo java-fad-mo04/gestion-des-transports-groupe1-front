@@ -95,7 +95,7 @@ const routes: Routes = [
     useClass: AuthInterceptorService,
     multi: true,
   }],
-  bootstrap: [AppComponent, CreerAnnoncesComponent],
+  bootstrap: [AppComponent],
 
   exports: [CreerAnnoncesComponent, ConfirmationSupressionComponent, ConfSupprResaComponent],
   entryComponents: [ConfirmationSupressionComponent, ConfSupprResaComponent]
