@@ -12,7 +12,7 @@
 
 
 <div class="text-right">
-  <a routerLinkActive="active" button type="button" mdbBtn class="gdp-button1" rounded="true" mdbWavesEffect
+  <a routerLinkActive="active" button type="button" mdbBtn class="gdp-button1 btn-rounded btn" rounded="true" mdbWavesEffect
     routerLink="/collaborateur/reservations/creer">Réserver un transport</a>
 </div>
 
@@ -66,7 +66,7 @@
                       <td>{{r.destination}}</td>
                       <td style="text-align: center">
 
-                        <button type="button" class="gdp-button2" rounded="true" mdbWavesEffect
+                        <button type="button" class="btn-sm btn-rounded btn" rounded="true" mdbWavesEffect
                           (click)="basicModal.show()">détails</button>
 
 
@@ -79,7 +79,7 @@
                                   (click)="basicModal.hide()">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
-                                <h4 class="modal-title w-100" id="myModalLabel">Détail</h4>
+                                <h4 class="modal-title w-100" id="myModalLabel">Détails</h4>
                               </div>
                               <div class="modal-body text-left">
                                 <p><b>Départ :</b> {{r.depart}}</p>
@@ -98,7 +98,7 @@
 
                         &nbsp;&nbsp;&nbsp;
 
-                        <button type="button" ngbAutofocus class="gdp-button5" mdbWavesEffect
+                        <button type="button" ngbAutofocus class="btn-sm gdp-button5 btn" mdbWavesEffect
                           (click)="open(r.id)">annuler</button>
 
                       </td>
@@ -132,7 +132,7 @@
                       <th scope="row">{{r.date | date:'dd/MM/yyy HH:mm'}}</th>
                       <td>{{r.depart}}</td>
                       <td>{{r.destination}}</td>
-                      <td style="text-align: center"><button type="button" class="gdp-button2" rounded="true"
+                      <td style="text-align: center"><button type="button" class="btn-sm btn-rounded btn" rounded="true"
                           mdbWavesEffect>détails</button></td>
 
 

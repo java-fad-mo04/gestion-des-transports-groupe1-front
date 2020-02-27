@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'collaborateur/statistiques', component: StatistiquesComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/chauffeurs', component: ChauffeursComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/vehicules', component: VehiculesComponent, canActivate: [StatutConnecteService] },
-  { path: 'admin/vehicules/:idVehicule', component: VehiculeDetailsComponent, canActivate: [StatutConnecteService] },
+  { path: 'admin/vehicules/:immatriculation', component: VehiculeDetailsComponent, canActivate: [StatutConnecteService] },
   // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
   // { path: 'admin/vehicules/geolocalisation', component: ReserverComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/occupation', component: OccupationComponent, canActivate: [StatutConnecteService] },

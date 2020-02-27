@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { Reservation } from '../models/Reservation';
 import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Vehicule } from '../models/Vehicule';
 
@@ -15,27 +16,38 @@ export class VehiculeDetailsComponent implements OnInit {
 
   reservationsCourantes: Observable<Reservation[]>;
   reservationsHisto: Observable<Reservation[]>;
-  vehicule: Observable<Vehicule>;
+  vehiculeDetails: Vehicule = new Vehicule();
 
   constructor(private _dataService: DataService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-      const idVehicule = params['idVehicule'];
+      // const idVehicule = params['idVehicule'];
+      const immatVehicule = params.get('immatriculation');
+      console.log('idvehicule ' + immatVehicule);
 
-      this.vehicule = this._dataService.afficherDetailsVehiculesSociete(idVehicule);
+      this._dataService.afficherDetailsVehiculesSociete(immatVehicule).subscribe(veh => {
+        this.vehiculeDetails = veh;
+        console.log(veh);
 
-      this.reservationsCourantes = this._dataService.listerReservationsSocieteParVehicule(idVehicule)
-        .pipe(
-          map(
-            resa => resa.filter(r => new Date(r.date).getTime() >= Date.now())));
+        this.reservationsCourantes = this._dataService.listerReservationsSocieteParVehicule(this.vehiculeDetails.id)
+          .pipe(
+            map(
+              resa => resa.filter(r => new Date(r.date).getTime() >= Date.now())));
 
-      this.reservationsHisto = this._dataService.listerReservationsSocieteParVehicule(idVehicule)
-        .pipe(
-          map(
-            resa => resa.filter(r => new Date(r.date).getTime() < Date.now())));
+        this.reservationsHisto = this._dataService.listerReservationsSocieteParVehicule(this.vehiculeDetails.id)
+          .pipe(
+            map(
+              resa => resa.filter(r => new Date(r.date).getTime() < Date.now())));
+      }
+        , (error: HttpErrorResponse) => {
+          console.log('error', error);
+        });
 
+      console.log('vehicule ' + this.vehiculeDetails);
+
+        console.log('vehicule ' + this.vehiculeDetails.immatriculation);
     });
   }
 }

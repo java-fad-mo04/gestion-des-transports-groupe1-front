@@ -79,7 +79,7 @@ export class DataService {
     return this._httpClient.get<Reservation[]>(`${url}reservationsSociete?idVehicule=${idVehicule}`);
   }
 
-  afficherDetailsVehiculesSociete(idVehicule: number): Observable<Vehicule> {
-    return this._httpClient.get<Vehicule>(`${url}vehiculesSociete/afficher/${idVehicule}`);
+  afficherDetailsVehiculesSociete(immatVeh: string): Observable<Vehicule> {
+    return this._httpClient.get<Vehicule>(`${url}vehiculesSociete/afficher/${immatVeh}`);
   }
 }
