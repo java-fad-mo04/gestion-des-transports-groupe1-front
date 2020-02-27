@@ -33,7 +33,7 @@
       <div class="md-form">
         <i class="fa fa-lock prefix grey-text"></i>
         <input type="password" placeholder="Mot de passe" #mdp="ngModel" id="defaultForm-pass" mdbValidate
-          name="motDePasse" class="form-control" mdbInput [(ngModel)]="collegue.motDePasse" required>
+          name="motDePasse" class="form-control" mdbInput [(ngModel)]="collegue.motDePasse" autocomplete="on" required>
         <mdb-error *ngIf="mdp.invalid && (mdp.dirty || mdp.touched)">Un mot de passe est requis</mdb-error>
       </div>
       <div class="text-center">
