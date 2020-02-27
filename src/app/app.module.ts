@@ -19,7 +19,7 @@ import { VehiculesComponent } from './vehicules/vehicules.component';
 import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
-//import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
+import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
 import {CreerReservationsComponent} from './creer_reservations/creer_reservations.component';
 import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
 import { UrlValidatorDirective } from './validators/url-validator.directive';
@@ -71,7 +71,7 @@ const routes: Routes = [
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    //ReserverComponent, // Matt : USGDT012 (probleme)
+    ReserverComponent, // Matt : USGDT012 (probleme) // audrey : remettre car probleme build en prod
     CreerAnnoncesComponent,
     UrlValidatorDirective, // Audrey : validation url photo
     ConfirmationSupressionComponent,
