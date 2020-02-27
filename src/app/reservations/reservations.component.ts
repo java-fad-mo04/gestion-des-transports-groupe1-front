@@ -20,6 +20,8 @@ export class ReservationsComponent implements OnInit {
 
   reservationsCourantes: Observable<Reservation[]>;
   reservationsHisto: Observable<Reservation[]>;
+  resaVsocieteCourantes: Observable<Reservation[]>;
+  resaVsocieteHisto: Observable<Reservation[]>;
 
 
 
@@ -37,6 +39,20 @@ export class ReservationsComponent implements OnInit {
       .pipe(
         map(
           resa => resa.filter(r => new Date(r.date).getTime() < Date.now())));
+
+
+
+
+    this.resaVsocieteCourantes = this._dataService.listerReservationsVehicule(this.col.id)
+      .pipe(
+        map(
+          resa => resa.filter(r => new Date(r.date).getTime() >= Date.now())));
+
+    this.resaVsocieteHisto = this._dataService.listerReservationsVehicule(this.col.id)
+      .pipe(
+        map(
+          resa => resa.filter(r => new Date(r.date).getTime() < Date.now())));
+
 
   }
   open(id: number) {
