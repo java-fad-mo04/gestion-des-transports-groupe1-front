@@ -4,7 +4,7 @@
 <div *ngIf="!(collegueConnecte | async).estAnonyme()" align="end"><app-menu></app-menu>
   <span>Bonjour {{(collegueConnecte | async).prenom}}</span>
   <span>({{(collegueConnecte | async).nom}})</span>
-  <a class="btn btn-danger" (click)="seDeconnecter()">Se déconnecter</a>
+  <a class="btn btn-danger btn-sm" (click)="seDeconnecter()">Se déconnecter</a>
 </div>
 
 
