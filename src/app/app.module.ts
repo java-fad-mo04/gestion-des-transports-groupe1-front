@@ -19,12 +19,13 @@ import { VehiculesComponent } from './vehicules/vehicules.component';
 import { PlanningComponent } from './planning/planning.component';
 import { OccupationComponent } from './occupation/occupation.component';
 import { ChauffeursComponent } from './chauffeurs/chauffeurs.component';
-//import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
+import { ReserverComponent } from './reserver/reserver.component'; // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
 import {CreerReservationsComponent} from './creer_reservations/creer_reservations.component';
 import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.component';
 import { UrlValidatorDirective } from './validators/url-validator.directive';
 import { ConfirmationSupressionComponent } from './modals/confirmation-supression/confirmation-supression.component';
-import { ConfSupprResaComponent } from './modals/conf-suppr-resa/conf-suppr-resa.component'; // Matt : modale de suppression de réservation
+import { ConfSupprResaComponent } from './modals/conf-suppr-resa/conf-suppr-resa.component';
+import { VehiculeDetailsComponent } from './vehicule-details/vehicule-details.component'; // Matt : modale de suppression de réservation
 
 
 
@@ -39,8 +40,9 @@ const routes: Routes = [
   { path: 'collaborateur/statistiques', component: StatistiquesComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/chauffeurs', component: ChauffeursComponent, canActivate: [StatutConnecteService] },
   { path: 'admin/vehicules', component: VehiculesComponent, canActivate: [StatutConnecteService] },
+  { path: 'admin/vehicules/:idVehicule', component: VehiculeDetailsComponent, canActivate: [StatutConnecteService] },
   // Matt : USGDT012 - Admin - Geolocalisation des véhicules (probleme)
-  //{ path: 'admin/vehicules/geolocalisation', component: ReserverComponent, canActivate: [StatutConnecteService] },
+  // { path: 'admin/vehicules/geolocalisation', component: ReserverComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/occupation', component: OccupationComponent, canActivate: [StatutConnecteService] },
   { path: 'chauffeur/planning', component: PlanningComponent, canActivate: [StatutConnecteService] },
   { path: '', redirectTo: '/connexion', pathMatch: 'full' }
@@ -60,13 +62,14 @@ const routes: Routes = [
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    //ReserverComponent, // Matt : USGDT012 (probleme)
+    ReserverComponent, // Matt : USGDT012 (probleme) // audrey : a remettre juste pour le master en prod
     CreerAnnoncesComponent,
     UrlValidatorDirective, // Audrey : validation url photo
     ConfirmationSupressionComponent,
     CreerReservationsComponent,
     CreerAnnoncesComponent,
-    ConfSupprResaComponent
+    ConfSupprResaComponent,
+    VehiculeDetailsComponent
   ],
   imports: [
     BrowserModule,

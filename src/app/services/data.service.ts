@@ -75,4 +75,11 @@ export class DataService {
     return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null);
   }
 
+  listerReservationsSocieteParVehicule(idVehicule: number): Observable<Reservation[]> {
+    return this._httpClient.get<Reservation[]>(`${url}reservationsSociete?idVehicule=${idVehicule}`);
+  }
+
+  afficherDetailsVehiculesSociete(idVehicule: number): Observable<Vehicule> {
+    return this._httpClient.get<Vehicule>(`${url}vehiculesSociete/afficher/${idVehicule}`);
+  }
 }
