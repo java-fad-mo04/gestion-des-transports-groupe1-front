@@ -9,7 +9,7 @@ import { Vehicule } from '../models/Vehicule';
 
 const url = environment.baseUrl;
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   responseType: 'text' as 'json'
 };
 
@@ -69,7 +69,7 @@ export class DataService {
   }
 
   creerVehiculeSociete(nouveauVehicule: Vehicule): Observable<void> {
-    return this._httpClient.post<void>(`${url}vehiculesSociete/creer`, JSON.stringify(nouveauVehicule) , httpOptions);
+    return this._httpClient.post<void>(`${url}vehiculesSociete/creer`, JSON.stringify(nouveauVehicule), httpOptions);
   }
   supprimerPassager(idCol: number, idResa: number): Observable<void> {
     return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null);

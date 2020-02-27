@@ -12,4 +12,5 @@ export class Reservation {
   public vehicule?: Vehicule;
   public chauffeur?: Collegue;
   public presenceChauffeur?: boolean;
+  public dateRetour?: string;
 }
