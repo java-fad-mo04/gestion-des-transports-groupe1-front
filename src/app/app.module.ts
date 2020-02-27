@@ -62,7 +62,7 @@ const routes: Routes = [
     PlanningComponent,
     OccupationComponent,
     ChauffeursComponent,
-    ReserverComponent, // Matt : USGDT012 (probleme) // audrey : a remettre juste pour le master en prod
+    ReserverComponent, // Matt : USGDT012 (probleme) // audrey : remettre car probleme build en prod
     CreerAnnoncesComponent,
     UrlValidatorDirective, // Audrey : validation url photo
     ConfirmationSupressionComponent,
