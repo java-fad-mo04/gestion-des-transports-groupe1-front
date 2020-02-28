@@ -25,7 +25,7 @@ import { CreerAnnoncesComponent } from './creer-annonces/creer-annonces.componen
 import { UrlValidatorDirective } from './validators/url-validator.directive';
 import { ConfirmationSupressionComponent } from './modals/confirmation-supression/confirmation-supression.component';
 import { ConfSupprResaComponent } from './modals/conf-suppr-resa/conf-suppr-resa.component'; // Matt : modale de suppression de réservation
-import { VehiculeDetailsComponent } from './vehicule-details/vehicule-details.component'; 
+import { VehiculeDetailsComponent } from './vehicule-details/vehicule-details.component';
 
 
 
