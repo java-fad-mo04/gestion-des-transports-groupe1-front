@@ -222,7 +222,7 @@
 
         <ngb-carousel>
           <ng-template ngbSlide *ngFor="let v of vehiculesSociete | async">
-            <div class="picsum-img-wrapper text-center d-block w-100" (load)="listerResaParvehicule(v.)">
+            <div class="picsum-img-wrapper text-center d-block w-100" (load)="listerResaParvehicule(v.id)">
               <img [src]="v.urlPhoto" class="rounded mx-auto d-block img-fluid">
             </div>
             <div class="carousel-caption" >
