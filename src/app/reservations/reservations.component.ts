@@ -18,7 +18,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ReservationsComponent implements OnInit {
   col: Collegue;
 
-
   reservationsCourantes: Observable<Reservation[]>;
   reservationsHisto: Observable<Reservation[]>;
   resaVsocieteCourantes: Observable<Reservation[]>;
