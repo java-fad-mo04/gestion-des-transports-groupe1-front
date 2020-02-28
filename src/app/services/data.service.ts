@@ -82,4 +82,8 @@ export class DataService {
   afficherDetailsVehiculesSociete(immatVeh: string): Observable<Vehicule> {
     return this._httpClient.get<Vehicule>(`${url}vehiculesSociete/afficher/${immatVeh}`);
   }
+
+  editerVehiculeSociete(editerVehicule: Vehicule, idVehicule: number): Observable<void> {
+    return this._httpClient.patch<void>(`${url}vehiculesSociete/editer/${idVehicule}`, JSON.stringify(editerVehicule), httpOptions);
+  }
 }

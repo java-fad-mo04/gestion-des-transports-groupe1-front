@@ -25,12 +25,10 @@ export class VehiculeDetailsComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       // const idVehicule = params['idVehicule'];
       const immatVehicule = params.get('immatriculation');
-      console.log('idvehicule ' + immatVehicule);
-
+     
       this._dataService.afficherDetailsVehiculesSociete(immatVehicule).subscribe(veh => {
         this.vehiculeDetails = veh;
-        console.log(veh);
-
+        
         this.reservationsCourantes = this._dataService.listerReservationsSocieteParVehicule(this.vehiculeDetails.id)
           .pipe(
             map(
@@ -44,10 +42,19 @@ export class VehiculeDetailsComponent implements OnInit {
         , (error: HttpErrorResponse) => {
           console.log('error', error);
         });
-
-      console.log('vehicule ' + this.vehiculeDetails);
-
-        console.log('vehicule ' + this.vehiculeDetails.immatriculation);
     });
+  }
+
+  validStatut(statut: string){
+    // console.log('statut '+statut);
+    console.log(this.vehiculeDetails);
+    this.vehiculeDetails.statut = statut;
+
+    this._dataService.editerVehiculeSociete(this.vehiculeDetails, this.vehiculeDetails.id).subscribe(() => {
+      console.log('success');
+    }, (error: HttpErrorResponse ) => {
+      console.log('error', error);
+    });
+
   }
 }
