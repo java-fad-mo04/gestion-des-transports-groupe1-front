@@ -44,7 +44,7 @@ export class DataService {
   }
 
   creerReservationVehicule(nouvelleResa: Reservation): Observable<void> {
-    return this._httpClient.post<void>(`${url}reservationsSociete`, nouvelleResa);
+    return this._httpClient.post<void>(`${url}reservationsSociete`, JSON.stringify(nouvelleResa), httpOptions);
   }
   supprimerAnnonce(idResa: number): Observable<void> {
     return this._httpClient.delete<void>(`${url}reservationsCovoiturage?idResa=${idResa}`, httpOptions);
@@ -73,6 +73,9 @@ export class DataService {
   }
   supprimerPassager(idCol: number, idResa: number): Observable<void> {
     return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null, httpOptions);
+  }
+  listerResaParVehicule(id: number): Observable<Reservation[]> {
+    return this._httpClient.get<Reservation[]>(`${url}vehiculesSociete?idVehicule=${id}`);
   }
 
   listerReservationsSocieteParVehicule(idVehicule: number): Observable<Reservation[]> {
