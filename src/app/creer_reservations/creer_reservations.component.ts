@@ -36,20 +36,19 @@ export class CreerReservationsComponent implements OnInit {
 
   filtre() {
     this.listeCovoiturage = null;
-console.log('rrrr');
-    if (this.depart !== "" || this.depart !== "" || this.date !== null) {
+
+    if (this.depart != "" || this.depart != "" || this.date != null) {
       this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage();
     }
 
-    if (this.depart !== "") {
+    if (this.depart != "") {
       this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
     }
-    if (this.destination !== "") {
+    if (this.destination != "") {
       this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.destination.startsWith(this.destination))));
     }
     if (this.date != null) {
       this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
     }
   }
-
 }
