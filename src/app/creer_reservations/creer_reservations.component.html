@@ -222,16 +222,16 @@
 
         <ngb-carousel>
           <ng-template ngbSlide *ngFor="let v of vehiculesSociete | async">
-            <div class="picsum-img-wrapper text-center d-block w-100" (load)="listerResaParvehicule(v.id)">
-              <img [src]="v.urlPhoto" class="rounded mx-auto d-block img-fluid">
+            <div class="picsum-img-wrapper text-center d-block w-100" >
+              <img [src]="v.urlPhoto" class="rounded mx-auto d-block img-fluid" (load)="listerResaParvehicule(v.id)">
             </div>
             <div class="carousel-caption" >
               <h3>{{v.immatriculation}}</h3>
               <p>{{v.marque}} {{v.modele}}</p>
               <p>{{v.categorie}}</p>
               <p *ngIf="v.statut === 'HORS_SERVICE' || v.statut === 'EN_REPARATION'">INDISPONIBLE</p>
-              <p><button type="button" mdbBtn class="gdp-button2" rounded="true" mdbWavesEffect [disabled]="etatDateDepart.invalid
-                && etatHeureDepart.invalid && etatDateRetour.invalid && etatHeureRetour.invalid || (v.statut === 'HORS_SERVICE' || v.statut === 'EN_REPARATION') " (click)="reserverModal.show()">Réserver</button>
+              <p><button  type="button" mdbBtn class="gdp-button2" rounded="true" mdbWavesEffect [disabled]="etatDateDepart.invalid
+                 && etatHeureDepart.invalid && etatDateRetour.invalid && etatHeureRetour.invalid || (v.statut === 'HORS_SERVICE' || v.statut === 'EN_REPARATION')"   (click)="reserverModal.show()">Réserver</button>
               </p>
             </div>
             <!-- modale avec informations détaillées de la réservation -->
