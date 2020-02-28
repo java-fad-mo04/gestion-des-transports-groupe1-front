@@ -4,7 +4,7 @@
 
 
 <div class="text-right">
-  <button type="button" mdbBtn class="gdp-button1" rounded="true" routerLink="/collaborateur/annonces/creer"
+  <button type="button" mdbBtn class="gdp-button1 btn-rounded btn" rounded="true" routerLink="/collaborateur/annonces/creer"
     mdbWavesEffect>Creer une nouvelle annonce</button>
 </div>
 <br> &nbsp; <br>
@@ -49,7 +49,7 @@
                 <td>{{r.destination}}</td>
                 <td style="text-align: center">{{r.passagers.length}}</td>
                 <td style="text-align: center">
-                  <button class="gdp-button5" (click)="open(r.id)">Annuler</button>
+                  <button mdbBtn class="gdp-button5 btn-sm" (click)="open(r.id)">Annuler</button>
               </td>
               </tr>
 
@@ -92,11 +92,11 @@
               <tr>
                 <td colspan="4" style="text-align:center">
 
-                        <span style="text-align: center; white-space: nowrap">
+                  <span style="text-align: center; white-space: nowrap">
 
-                          <button type="button"  class="gdp-button3" rounded="true" mdbWavesEffect>&lt;</button><b>&nbsp;&nbsp;1&nbsp;/&nbsp;5&nbsp;&nbsp;</b><button type="button" class="gdp-button3" rounded="true" mdbWavesEffect>&gt;</button>
+                    <button type="button" mdbBtn class="gdp-button3 btn-sm" rounded="true" mdbWavesEffect>&lt;</button><b>&nbsp;&nbsp;1&nbsp;/&nbsp;5&nbsp;&nbsp;</b><button type="button" mdbBtn class="gdp-button3 btn-sm" rounded="true" mdbWavesEffect>&gt;</button>
 
-                        </span>
+                  </span>
 
                 </td>
               </tr>

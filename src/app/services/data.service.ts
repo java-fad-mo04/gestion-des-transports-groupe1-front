@@ -72,10 +72,21 @@ export class DataService {
     return this._httpClient.post<void>(`${url}vehiculesSociete/creer`, JSON.stringify(nouveauVehicule), httpOptions);
   }
   supprimerPassager(idCol: number, idResa: number): Observable<void> {
-    return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null);
+    return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null, httpOptions);
   }
   listerResaParVehicule(id: number): Observable<Reservation[]> {
     return this._httpClient.get<Reservation[]>(`${url}vehiculesSociete?idVehicule=${id}`);
   }
 
+  listerReservationsSocieteParVehicule(idVehicule: number): Observable<Reservation[]> {
+    return this._httpClient.get<Reservation[]>(`${url}reservationsSociete?idVehicule=${idVehicule}`);
+  }
+
+  afficherDetailsVehiculesSociete(immatVeh: string): Observable<Vehicule> {
+    return this._httpClient.get<Vehicule>(`${url}vehiculesSociete/afficher/${immatVeh}`);
+  }
+
+  editerVehiculeSociete(editerVehicule: Vehicule, idVehicule: number): Observable<void> {
+    return this._httpClient.patch<void>(`${url}vehiculesSociete/editer/${idVehicule}`, JSON.stringify(editerVehicule), httpOptions);
+  }
 }

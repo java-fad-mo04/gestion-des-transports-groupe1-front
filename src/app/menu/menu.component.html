@@ -1,89 +1,35 @@
 
-
 <!-- Matt : nouvelle barre de menu fonctionnelle avec la fonction hasRole() dans le TS -->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
-    <div class="container text-left">
-        <mdb-navbar-brand><img width="150" height="69" src="assets/images/gdt05_mini.jpg"></mdb-navbar-brand>
-
-        <ul class="nav navbar-nav" routerLinkActive="active">
-            <li class="nav-item"><a class="nav-link" routerLink="/collaborateur/reservations" [routerLinkActive]="['highlightmenu']">Vos réservations</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item"><a class="nav-link" id="m2" routerLink="/collaborateur/annonces" [routerLinkActive]="['highlightmenu']">Vos annonces</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item"><a class="nav-link" id="m3" routerLink="/collaborateur/statistiques" [routerLinkActive]="['highlightmenu']">Statistiques</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/chauffeur/occupation" [routerLinkActive]="['highlightmenu']">Occupation</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/chauffeur/planning" [routerLinkActive]="['highlightmenu']">Planning</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/admin/chauffeurs" [routerLinkActive]="['highlightmenu']">Chauffeurs</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/admin/vehicules" [routerLinkActive]="['highlightmenu']">Véhicules</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item" *ngIf="hasRole('ROLE_CHAUFFEUR')"><a class="nav-link" routerLink="/chauffeur/occupation" [routerLinkActive]="['highlightmenu']">Occupation</a></li>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item" *ngIf="hasRole('ROLE_CHAUFFEUR')"><a class="nav-link" routerLink="/chauffeur/planning" [routerLinkActive]="['highlightmenu']">Planning</a></li>
-        </ul>
-
-    </div>
-  </mdb-navbar>
-
-
-
-
-
-<!--
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
-
-
-  <mdb-navbar-brand><a class="navbar-brand" href="#"><img width="150" height="69"
-        src="assets/images/gdt05_mini.jpg"></a></mdb-navbar-brand>
-
-  <ul class="navbar-nav ">
-    <li class="nav-item">
-      <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/reservations"
-        mdbWavesEffect>Vos réservations</a>
-    </li>
-    <li class="nav-item">
-      <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/annonces" mdbWavesEffect>Vos
-        annonces</a>
-    </li>
-    <li class="nav-item">
-      <a routerLinkActive="active" class="nav-link waves-light" routerLink="/collaborateur/statistiques"
-        mdbWavesEffect>Statistiques </a>
-    </li>
-
-
-
-
-    <ng-container *ngFor="let r of listeRoles">
-      <ng-container *ngIf="r === 'ROLE_ADMINISTRATEUR'">
-
-        <li class="nav-item">
-          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/admin/chauffeurs"
-            mdbWavesEffect>Chauffeurs
-          </a>
-        </li>
-        <li class="nav-item">
-          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/admin/vehicules"
-            mdbWavesEffect>Véhicules</a>
-        </li>
-
-      </ng-container>
-
-      <ng-container *ngIf="r === 'ROLE_CHAUFFEUR'">
-        <li class="nav-item">
-          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/occupation"
-            mdbWavesEffect>Occupation </a>
-        </li>
-        <li class="nav-item">
-          <a routerLinkActive="active" class="nav-link waves-light" routerLink="/chauffeur/planning"
-            mdbWavesEffect>Planning
-          </a>
-        </li>
-      </ng-container>
-    </ng-container>
-  </ul>
+  <div class="container text-left">
+    <table>
+      <tbody>
+        <tr>
+          <td> <mdb-navbar-brand><img width="150" height="69" src="assets/images/gdt05_mini.jpg"></mdb-navbar-brand> </td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>
+      <ul class="nav navbar-nav" routerLinkActive="active">
+          <li class="nav-item"><a class="nav-link" routerLink="/collaborateur/reservations" [routerLinkActive]="['highlightmenu']">Vos réservations</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item"><a class="nav-link" id="m2" routerLink="/collaborateur/annonces" [routerLinkActive]="['highlightmenu']">Vos annonces</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <!-- <li class="nav-item"><a class="nav-link" id="m3" routerLink="/collaborateur/statistiques" [routerLinkActive]="['highlightmenu']">Statistiques</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/chauffeur/occupation" [routerLinkActive]="['highlightmenu']">Occupation</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/chauffeur/planning" [routerLinkActive]="['highlightmenu']">Planning</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp; -->
+          <!-- <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/admin/chauffeurs" [routerLinkActive]="['highlightmenu']">Chauffeurs</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp; -->
+          <li class="nav-item" *ngIf="hasRole('ROLE_ADMINISTRATEUR')"><a class="nav-link" routerLink="/admin/vehicules" [routerLinkActive]="['highlightmenu']">Véhicules</a></li>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item" *ngIf="hasRole('ROLE_CHAUFFEUR')"><a class="nav-link" routerLink="/chauffeur/occupation" [routerLinkActive]="['highlightmenu']">Occupation</a></li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <li class="nav-item" *ngIf="hasRole('ROLE_CHAUFFEUR')"><a class="nav-link" routerLink="/chauffeur/planning" [routerLinkActive]="['highlightmenu']">Planning</a></li> -->
+      </ul>
+      </td>
+      </tr>
+      </tbody>
+      </table>
+  </div>
 </mdb-navbar>
-
--->

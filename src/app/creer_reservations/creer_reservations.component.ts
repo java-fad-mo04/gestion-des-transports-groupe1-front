@@ -9,9 +9,6 @@ import { Vehicule } from '../models/Vehicule';
 import { NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { async } from '@angular/core/testing';
 
-
-
-
 @Component({
 
   selector: 'app-creer_reservations',
@@ -22,12 +19,13 @@ import { async } from '@angular/core/testing';
 
 export class CreerReservationsComponent implements OnInit {
 
-  depart: string = "";
-  destination: string = "";
+  depart: string = '';
+  destination: string = '';
   date: Date;
   collegue: Collegue;
 
   passagers: Collegue[];
+
   vehiculesSociete: Observable<Vehicule[]>;
   photosVehicules: string[];
   listeCovoiturage: Observable<Reservation[]>;
@@ -50,6 +48,8 @@ export class CreerReservationsComponent implements OnInit {
   constructor(private _dataService: DataService, private autth: AuthService) { }
 
 
+  constructor(private _dataService: DataService, private autth: AuthService) { }
+
   ngOnInit() {
     this.autth.collegueConnecteObs.subscribe(c => this.collegue = c);
     this.vehiculesSociete = this._dataService.listerVehiculesSociete();
@@ -57,6 +57,7 @@ export class CreerReservationsComponent implements OnInit {
 
 
   }
+
 
 
   creerResaCovoiturageFiltreDepart() {
@@ -75,12 +76,17 @@ export class CreerReservationsComponent implements OnInit {
     this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage()
     .pipe(map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
   }
+
   ajouterPassagerCovoiturage(idResa: number) {
     this._dataService.ajouterPassager(this.collegue.id, idResa).subscribe();
   }
 
   filtre() {
-    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage();
+    this.listeCovoiturage = null;
+
+    if (this.depart != "" || this.depart != "" || this.date != null) {
+      this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage();
+    }
 
     if (this.depart != "") {
       this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
@@ -92,7 +98,6 @@ export class CreerReservationsComponent implements OnInit {
       this.listeCovoiturage = this.listeCovoiturage.pipe(
         map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
     }
-
   }
   private pad(i: number): string {
     return i < 10 ? `0${i}` : `${i}`;

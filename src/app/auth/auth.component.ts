@@ -24,6 +24,8 @@ export class AuthComponent implements OnInit {
   constructor(private _authSrv: AuthService, private _router: Router) { }
 
   ngOnInit() {
+    
+    
   }
 
   connecter() {
@@ -46,18 +48,22 @@ export class AuthComponent implements OnInit {
 
   remplissageAuto(rrole: string) {
 
+
     if (rrole == 'admin') {
-      (<HTMLInputElement>document.getElementById('defaultForm-email')).value = 'admin@dev.fr';
+      // le code ci dessous HTMLInputElement modifie le chaps texte mais on ne peut pas valider la connexion
+      //(<HTMLInputElement>document.getElementById('defaultForm-email')).value = 'admin@dev.fr';
+      // le code ci dessous fonctionne :
+      this.collegue.email = 'admin@dev.fr';
         
     }
     else if (rrole == 'chauffeur') {
-      (<HTMLInputElement>document.getElementById('defaultForm-email')).value = 'chauffeur@dev.fr';
+      this.collegue.email = 'chauffeur@dev.fr';
     }
     else {
-      (<HTMLInputElement>document.getElementById('defaultForm-email')).value = 'user@dev.fr';
+      this.collegue.email = 'user@dev.fr';
     }
 
-    (<HTMLInputElement>document.getElementById('defaultForm-pass')).value = 'superpass';
+    this.collegue.motDePasse = 'superpass';
 
 
   }
