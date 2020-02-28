@@ -35,7 +35,7 @@ export class CreerAnnoncesComponent implements OnInit {
   messageOk: string;
   erreur = false;
 
-  constructor(private _dataService: DataService, private _authSrv: AuthService, private _adresseService: AdresseServiceService) { }
+  constructor(private _dataService: DataService, private _authSrv: AuthService) { }
 
   ngOnInit() {
     this._authSrv.collegueConnecteObs.subscribe(c => this.col = c);

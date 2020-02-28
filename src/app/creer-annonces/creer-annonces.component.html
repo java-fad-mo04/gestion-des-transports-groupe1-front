@@ -26,9 +26,7 @@
                   <div class="col-6"><input type="text" class="form-control" id="depart"
                       [(ngModel)]="nouvelleResa.depart" name="depart" required #etatDepart="ngModel" required>
 
-                    <p *ngIf="etatDepart.invalid && etatDepart.dirty">Vous devez saisir une
-                      adresse
-                    </p>
+                      <mdb-error *ngIf="etatDepart.invalid && (etatDepart.dirty || etatDepart.touched)">Veuillez préciser l'adresse de départ</mdb-error>
                   </div>
                 </div>
                 <div class="row px-3 pt-3">
@@ -36,10 +34,7 @@
                   <div class="col-6"><input type="text" class="form-control" id="destination"
                       [(ngModel)]="nouvelleResa.destination" name="destination" required #etatDestination="ngModel"
                       required>
-                    <p *ngIf="etatDestination.invalid && etatDestination.dirty">Vous devez
-                      saisir une
-                      adresse
-                    </p>
+                      <mdb-error *ngIf="etatDestination.invalid && (etatDestination.dirty || etatDestination.touched)">Veuillez préciser l'adresse de destination</mdb-error>
                   </div>
                 </div>
                 <!-- <div class="row px-3 pt-3">
@@ -73,38 +68,28 @@
                   <div class="col-3"><label for="depart">Immatriculation</label></div>
                   <div class="col-6">
                     <input type="text" class="form-control" id="immatriculation" [(ngModel)]="veh.immatriculation"
-                      name="immatriculation" required #etatImmatriculation="ngModel" required>
-                    <p *ngIf="etatImmatriculation.invalid && etatImmatriculation.dirty">Vous
-                      devez saisir une
-                      immatriculation
-                    </p>
+                      name="immatriculation" required #etatImmatriculation="ngModel" required pattern="">
+                      <mdb-error *ngIf="etatImmatriculation.invalid && (etatImmatriculation.dirty || etatImmatriculation.touched)">Veuillez préciser l'immatricualtion de type AA-123-AA'</mdb-error>
                   </div>
                 </div>
                 <div class="row px-3 pt-3">
                   <div class="col-3"><label for="destination">Marque</label></div>
                   <div class="col-6"><input type="text" class="form-control" id="marque" [(ngModel)]="veh.marque"
                       name="marque" required #etatMarque="ngModel" required>
-                    <p *ngIf="etatMarque.invalid && etatMarque.dirty">Vous devez saisir une
-                      marque
-                    </p>
+                      <mdb-error *ngIf="etatMarque.invalid && (etatMarque.dirty || etatMarque.touched)">Veuillez préciser la marque</mdb-error>
                   </div>
                 </div>
                 <div class="row px-3 pt-3">
                   <div class="col-3"><label for="destination">Modèle</label></div>
                   <div class="col-6"><input type="text" class="form-control" id="modele" [(ngModel)]="veh.modele" name="modele" required #etatModele="ngModel" required>
-                    <p  *ngIf="etatModele.invalid && etatModele.dirty">Vous devez saisir un
-                      modèle
-                    </p>
+                    <mdb-error *ngIf="etatModele.invalid && (etatModele.dirty || etatModele.touched)">Veuillez préciser le modèle</mdb-error>
                   </div>
                 </div>
                 <div class="row px-3 pt-3">
                   <div class="col-3"><label for="destination">Nombre de places disponibles</label></div>
                   <div class="col-6"><input type="number" class="form-control" id="nbrPlace"
-                      [(ngModel)]="veh.nombrePlace" name="nbrPlace" required #etatPlace="ngModel" required>
-                    <p  *ngIf="etatPlace.invalid && etatPlace.dirty">Vous devez saisir un
-                      nombre
-                      de places disponibles
-                    </p>
+                      [(ngModel)]="veh.nombrePlace" name="nbrPlace" required #etatPlace="ngModel" required >
+                      <mdb-error *ngIf="etatPlace.invalid && (etatPlace.dirty || etatPlace.touched)">Veuillez préciser le nombre de place</mdb-error>
                   </div>
                 </div>
               </div>
@@ -133,15 +118,14 @@
                       <input type="date" class="form-control" id="date" [(ngModel)]="date" name="date" required
                         #etatDate="ngModel" required>
                     </div>
-                    <p  *ngIf="etatDate.invalid && etatDate.dirty">Vous devez saisir une
-                      date
-                    </p>
+                    <mdb-error *ngIf="etatDate.invalid && (etatDate.dirty || etatDate.touched)">Une date de départ est requise</mdb-error>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-3 offset-5 ">
-                    <ngb-timepicker [(ngModel)]="time" [hourStep]="hourStep" [minuteStep]="minuteStep">
+                    <ngb-timepicker [(ngModel)]="time" [hourStep]="hourStep" [minuteStep]="minuteStep" required #etatHeure="ngModel">
                     </ngb-timepicker>
+                    <mdb-error *ngIf="etatHeure.invalid && (etatHeure.dirty || etatHeure.touched)">Une heure de départ est requise</mdb-error>
                   </div>
                 </div>
 
@@ -155,18 +139,23 @@
         </tbody>
       </table>
 
+
       <div class="container-fluid">
           <div class="row">
             <div class="col gdp-barre2">
                 &nbsp;
             </div>
             <div class="col gdp-barre2 text-center">
-              <button class="btn gdp-button1" (click)="creerReservation()" routerLink="/collaborateur/annonces">Valider</button>
+              <button class="btn btn-dark " (click)="creerReservation() "
+            routerLink="/collaborateur/annonces"  [disabled]="etatDate.invalid && etatDepart.invalid && etatDestination.invalid
+            && etatHeure.invalid && etatImmatriculation.invalid && etatMarque.invalid && etatModele.invalid
+            &&etatPlace.invalid">Valider</button>
             </div>
             <div class="col gdp-barre2">
                 &nbsp;
             </div>
           </div>
+
       </div>
         
 
