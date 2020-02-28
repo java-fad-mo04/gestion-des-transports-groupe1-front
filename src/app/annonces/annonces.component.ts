@@ -7,6 +7,7 @@ import { Reservation } from '../models/Reservation';
 import { Observable } from 'rxjs';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationSupressionComponent } from '../modals/confirmation-supression/confirmation-supression.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-annonces',
@@ -35,12 +36,14 @@ export class AnnoncesComponent implements OnInit {
     const modalRef = this._modalService.open(ConfirmationSupressionComponent).result
     .then(result => {
       if (result === 'Ok') {
-        this._dataService.supprimerAnnonce(id).subscribe();
-        this.annoncesCourantes = this._dataService.listerAnnoncesCovoiturage(this.col.id).pipe(
-          map(an => an.filter( a => new Date(a.date).getTime() >= Date.now() )));
+        this._dataService.supprimerAnnonce(id).subscribe(() => {
+          console.log('success');
+          this.annoncesCourantes = this._dataService.listerAnnoncesCovoiturage(this.col.id).pipe(
+            map(an => an.filter( a => new Date(a.date).getTime() >= Date.now() )));
+        }, (error: HttpErrorResponse ) => {
+          console.log('error', error);
+        });
       }
     });
-
-
   }
 }

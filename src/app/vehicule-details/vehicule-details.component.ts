@@ -25,10 +25,10 @@ export class VehiculeDetailsComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       // const idVehicule = params['idVehicule'];
       const immatVehicule = params.get('immatriculation');
-     
+
       this._dataService.afficherDetailsVehiculesSociete(immatVehicule).subscribe(veh => {
         this.vehiculeDetails = veh;
-        
+
         this.reservationsCourantes = this._dataService.listerReservationsSocieteParVehicule(this.vehiculeDetails.id)
           .pipe(
             map(
@@ -45,7 +45,7 @@ export class VehiculeDetailsComponent implements OnInit {
     });
   }
 
-  validStatut(statut: string){
+  validStatut(statut: string) {
     // console.log('statut '+statut);
     console.log(this.vehiculeDetails);
     this.vehiculeDetails.statut = statut;

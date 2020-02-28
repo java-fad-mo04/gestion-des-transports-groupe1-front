@@ -35,7 +35,6 @@ export class CreerReservationsComponent implements OnInit {
   }
 
   filtre() {
-
     this.listeCovoiturage = null;
 
     if (this.depart != "" || this.depart != "" || this.date != null) {
@@ -52,5 +51,4 @@ export class CreerReservationsComponent implements OnInit {
       this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
     }
   }
-
 }
