@@ -260,7 +260,7 @@
                     </tr>
                     <tr *ngFor="let r of resaVsocieteHisto | async">
 
-                      <td scope="row">{{r.date | date:'dd/MM/yyy HH:mm'}}</td>
+                      <td scope="row">{{r.dateDepart | date:'dd/MM/yyy HH:mm'}}</td>
                       <td scope="row">{{r.dateRetour | date:'dd/MM/yyy HH:mm'}}</td>
                       <td>{{r.vehicule.immatriculation}}</td>
                       <td>{{r.vehicule.marque}}</td>

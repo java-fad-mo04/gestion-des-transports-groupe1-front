@@ -1,3 +1,5 @@
+import { Collegue } from "./Collegue";
+
 export class Vehicule {
   public id?: number;
   public marque?: string;
