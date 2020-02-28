@@ -15,14 +15,14 @@
     <div class="col-12 col-md-2 offset-1"><label for="r_marque">Marque</label></div>
     <div class="col-12 col-md-3">
       <select name="r_marque" id="r_marque" class="form-control" (change)="rechercheImmatriculationMarque('marque')">
-        <option value=""></option>
+        <option value="">Tous</option>
         <option *ngFor="let marque of listeMarques" value="{{marque}}">{{marque}}</option>
       </select>
     </div>
   </div>
   <div class="row pt-1">
     <div class="col-12 text-right">
-      <button type="button" mdbBtn class="gdp-button1" rounded="true" routerLink="/admin/vehicules" mdbWavesEffect
+      <button type="button" mdbBtn class="gdp-button1 btn-rounded btn" rounded="true" routerLink="/admin/vehicules" mdbWavesEffect
         (click)="basicModal.show()">Ajouter un véhicule</button>
 
       <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
@@ -98,7 +98,7 @@
   <div class="row pt-3">
     <div class="col-12 col-md-3 text-center" *ngFor="let v of vehiculesSociete | async">
       <div class="row">
-        <div class="col-12"><img src="{{v.urlPhoto}}" width="100%" /></div>
+        <div class="col-12"><a href="admin/vehicules/{{v.immatriculation}}"><img src="{{v.urlPhoto}}" width="100%" /></a></div>
         <div class="col-12">{{v.immatriculation.toUpperCase()}}</div>
         <div class="col-12">{{v.marque}} - {{v.modele}}</div>
         <div class="col-12">{{v.categorie}}</div>

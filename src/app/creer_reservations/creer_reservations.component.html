@@ -1,12 +1,7 @@
 <p>&nbsp;</p>
-
 <h1>Réserver un véhicule</h1>
-
 <p>&nbsp;</p>
-
 <br> &nbsp; <br>
-
-
 <ngb-accordion [closeOthers]="true">
   <ngb-panel id="static-1" title="Covoiturage">
     <ng-template ngbPanelContent>
@@ -15,7 +10,6 @@
           <tr>
             <td class="gdp-barre1">
               <h2><b>Covoiturage</b></h2>
-
             </td>
           </tr>
           <tr>
@@ -23,10 +17,8 @@
               <table class="container-fluid">
                 <table class="container-fluid">
                   <tbody>
-
                     <h3><b>Critères</b></h3>
                     <br>
-
                     <!-- Grid row -->
                     <div class="form-group row">
                       <!-- Default input -->
@@ -34,58 +26,36 @@
                       <div class="col">
                         <input (keyup)="filtre()" mdbInput type="text" class="form-control" id="inputAdresseDepart"
                           [(ngModel)]="depart" name="adresseDepart" required #etatAdresseDepart="ngModel">
-
                         <div class="invalid-feedback" *ngIf="etatAdresseDepart.invalid && etatAdresseDepart.dirty">Vous
                           devez saisir une
                           adresse de départ
                         </div>
                       </div>
-
-                      <!-- Default input -->
                       <label for="adresseDestination" class="col-sm-2 col-form-label">Adresse de destination</label>
                       <div class="col">
                         <input (keyup)="filtre()" mdbInput type="text" class="form-control" id="inputAdresseDestination"
                           [(ngModel)]="destination" name="adresseDepart" required #etatAdresseDestination="ngModel">
                       </div>
-
                       <div class="invalid-feedback"
                         *ngIf="etatAdresseDestination.invalid && etatAdresseDestination.dirty">Vous devez saisir une
                         adresse de destination
                       </div>
                     </div>
-                    <div class="col">
-                      <p>Durée du trajet</p>
-
-
-                    </div>
                     <div class="form-group row">
                       <label for="dateDepart" class="col-sm-2 col-form-label">Date de départ</label>
                       <div class="col-sm-10">
-
                         <input (change)="filtre()" input type="date" id="inputDate" [(ngModel)]="date" name="dateDepart"
                           required #etatDate="ngModel">
-
                         <div class="invalid-feedback" *ngIf="etatDate.invalid && etatDate.dirty">Vous devez saisir une
                           date
                         </div>
                       </div>
                     </div>
-                    <div *ngIf="err" class="alert alert-danger" role="alert">
-                      {{messageError}}
-                    </div>
-                    <div *ngIf="resaOk" class="alert alert-danger" role="alert">
-                      {{messageOk}}
-                    </div>
-
                   </tbody>
-
                 </table>
                 <table class="container-fluid">
                   <tbody>
-
-
                     <h3><b>Covoiturage</b></h3>
-
                     <br>
                     <tr>
                       <th scope="col">
@@ -112,7 +82,6 @@
                       <th scope="col" style="text-align: center">&nbsp;</th>
                     </tr>
                     <tr *ngFor="let newCovoit of listeCovoiturage | async">
-
                       <th scope="row">{{newCovoit.date | date:'dd/MM/yyy HH:mm'}}</th>
                       <td>{{newCovoit.depart}}</td>
                       <td>{{newCovoit.destination}}</td>
@@ -120,18 +89,15 @@
                       <td>{{newCovoit.chauffeur.prenom}} {{newCovoit.chauffeur.nom.toUpperCase()}}</td>
                       <td>{{newCovoit.vehicule.nombrePlace}}</td>
                       <ng-container *ngIf="newCovoit.id === collegue.id;else OKresa">
-                      <td   style="text-align: center"><button type="button" mdbBtn class="gdp-button2" rounded="true"
-                          mdbWavesEffect   (click)="basicModal.show()" disabled>Réserver</button>
-                      </td>
-                    </ng-container>
-                   <ng-template #OKresa>
-                    <td style="text-align: center"><button  type="button" mdbBtn class="gdp-button2" rounded="true"
-                      mdbWavesEffect   (click)="basicModal.show()" >Réserver</button>
-                  </td></ng-template>
-
-
-
-
+                        <td style="text-align: center"><button type="button" mdbBtn class="gdp-button2" rounded="true"
+                            mdbWavesEffect (click)="basicModal.show()" disabled>Réserver</button>
+                        </td>
+                      </ng-container>
+                      <ng-template #OKresa>
+                        <td style="text-align: center"><button type="button" mdbBtn class="gdp-button2" rounded="true"
+                            mdbWavesEffect (click)="basicModal.show()">Réserver</button>
+                        </td>
+                      </ng-template>
                       <!-- modale avec informations détaillées de la réservation -->
                       <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
                         aria-labelledby="myBasicModalLabel" aria-hidden="true">
@@ -152,23 +118,17 @@
                               <p>Chauffeur :{{newCovoit.chauffeur.prenom}} {{newCovoit.chauffeur.nom}}</p>
                             </div>
                             <div class="modal-footer">
-
                               <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
                                 (click)="basicModal.hide()" mdbWavesEffect>Annuler</button>
-
-
-                              <button type="button" routerLink="/collaborateur/reservations" mdbBtn color="secondary" class="waves-light"
-                                aria-label="Close" (click)="ajouterPassagerCovoiturage(newCovoit.id); basicModal.hide()"
-                                 mdbWavesEffect>Confirmer</button>
-
-
+                              <button type="button" routerLink="/collaborateur/reservations" mdbBtn color="secondary"
+                                class="waves-light" aria-label="Close"
+                                (click)="ajouterPassagerCovoiturage(newCovoit.id); basicModal.hide()"
+                                mdbWavesEffect>Confirmer</button>
                             </div>
                           </div>
                         </div>
                       </div>
-
                     </tr>
-
                   </tbody>
                 </table>
 
@@ -179,21 +139,7 @@
       </table>
     </ng-template>
   </ngb-panel>
-  <ngb-panel id="static-2" title="Véhicules de société">
-    <ng-template ngbPanelContent>
-      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-      officia
-      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-      tempor,
-      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-      helvetica,
-      craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-      occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-      labore sustainable VHS.
-    </ng-template>
-  </ngb-panel>
-
-  <ngb-panel id="static-3" title="Véhicule avec chauffeur privé">
+  <ngb-panel id="static-2" title="Véhicule de société">
     <ng-template ngbPanelContent>
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
       officia
