@@ -19,18 +19,22 @@
       </div>
       <div class="row">
         <div class="col-4">Catégorie</div>
-        <div class="col-4">{{vehiculeDetails.categorie}}   {{vehiculeDetails.statut}}</div>
+        <div class="col-4">{{vehiculeDetails.categorie}}</div>
+      </div>
+      <div class="row">
+        <div class="col-4">Statut</div>
+        <div class="col-4">{{vehiculeDetails.statut}}</div>
       </div>
     </div>
     <div class="col-12 col-md-4 text-right">
       <form #etatForm="ngForm">
-        <div class="row" >
-          <div class="col-12"><button type="button" id="reparation" name="reparation" style="width:200px" class="btn gdp-button1 btn-rounded waves-effect"
-            (click)="validStatut('EN_REPARATION')" [disabled]="vehiculeDetails.statut === 'EN_REPARATION'">Mettre en réparation</button></div>
-        </div>
-        <div class="row pt-1">
+        <div class="row">
           <div class="col-12"><button type="button" id="service" name="service" style="width:200px" class="btn gdp-button1 btn-rounded waves-effect"
             (click)="validStatut('EN_SERVICE')" [disabled]="vehiculeDetails.statut === 'EN_SERVICE'">Mettre en service</button></div>
+        </div>
+        <div class="row pt-1" >
+          <div class="col-12"><button type="button" id="reparation" name="reparation" style="width:200px" class="btn btn-warning btn-rounded waves-effect"
+            (click)="validStatut('EN_REPARATION')" [disabled]="vehiculeDetails.statut === 'EN_REPARATION'">Mettre en réparation</button></div>
         </div>
         <div class="row pt-1">
           <div class="col-12"><button type="button" id="hors" name="hors" style="width:200px" class="btn btn-danger btn-rounded waves-effect"

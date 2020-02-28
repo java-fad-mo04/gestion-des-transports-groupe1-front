@@ -72,7 +72,7 @@ export class DataService {
     return this._httpClient.post<void>(`${url}vehiculesSociete/creer`, JSON.stringify(nouveauVehicule), httpOptions);
   }
   supprimerPassager(idCol: number, idResa: number): Observable<void> {
-    return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null);
+    return this._httpClient.patch<void>(`${url}reservationsCovoiturage/supprimer/${idCol}?idResa=${idResa}`, null, httpOptions);
   }
 
   listerReservationsSocieteParVehicule(idVehicule: number): Observable<Reservation[]> {

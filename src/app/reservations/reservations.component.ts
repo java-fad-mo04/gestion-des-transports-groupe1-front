@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbActiveModal, NgbModal, NgbAccordion, NgbPanel } from '@ng-bootstrap/ng-bootstrap';
 import { ConfSupprResaComponent } from '../modals/conf-suppr-resa/conf-suppr-resa.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservations',
@@ -42,8 +43,6 @@ export class ReservationsComponent implements OnInit {
           resa => resa.filter(r => new Date(r.date).getTime() < Date.now())));
 
 
-
-
     this.resaVsocieteCourantes = this._dataService.listerReservationsVehicule(this.col.id)
       .pipe(
         map(
@@ -60,9 +59,13 @@ export class ReservationsComponent implements OnInit {
     const modalRef = this._modalService.open(ConfSupprResaComponent).result
       .then(result => {
         if (result === 'Ok') {
-          this._dataService.supprimerPassager(this.col.id, id).subscribe();
-          this.reservationsCourantes = this._dataService.listerAnnoncesCovoiturage(this.col.id).pipe(
-            map(an => an.filter(a => new Date(a.date).getTime() >= Date.now())));
+          this._dataService.supprimerPassager(this.col.id, id).subscribe(() => {
+            console.log('success');
+            this.reservationsCourantes = this._dataService.listerAnnoncesCovoiturage(this.col.id).pipe(
+              map(an => an.filter(a => new Date(a.date).getTime() >= Date.now())));
+          }, (error: HttpErrorResponse ) => {
+            console.log('error', error);
+          });
         }
       });
   }
