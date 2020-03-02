@@ -33,8 +33,6 @@ export class CreerReservationsComponent implements OnInit {
   reservationVehicule: Reservation  = new Reservation();
 
   resaOk = false;
-  messageError: string;
-  messageOk: string;
   err: boolean;
   dejaPresent: boolean;
   dateDepartSociete: Date;
@@ -53,28 +51,6 @@ export class CreerReservationsComponent implements OnInit {
   ngOnInit() {
     this.autth.collegueConnecteObs.subscribe(c => this.collegue = c);
     this.vehiculesSociete = this._dataService.listerVehiculesSociete();
-
-
-
-  }
-
-
-
-  creerResaCovoiturageFiltreDepart() {
-
-    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage().pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
-  }
-
-  creerResaCovoiturageFiltreDestination() {
-    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage()
-    .pipe(map(d => d.filter(e => e.destination.startsWith(this.destination))));
-  }
-
-  creerResaCovoiturageFiltreDate() {
-    console.log(this.date);
-
-    this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage()
-    .pipe(map(d => d.filter(e => new Date(e.date).toISOString().split('T')[0] === this.date.toString())));
   }
 
   ajouterPassagerCovoiturage(idResa: number) {
