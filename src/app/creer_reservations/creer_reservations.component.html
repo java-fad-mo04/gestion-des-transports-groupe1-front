@@ -140,6 +140,7 @@
                               <p>Date/Heure :{{newCovoit.date}}</p>
                               <p>Véhicule :{{newCovoit.vehicule.modele}} {{newCovoit.vehicule.marque}}</p>
                               <p>Chauffeur :{{newCovoit.chauffeur.prenom}} {{newCovoit.chauffeur.nom}}</p>
+
                             </div>
                             <div class="modal-footer">
 
@@ -147,7 +148,7 @@
                                 (click)="basicModal.hide()" mdbWavesEffect>Annuler</button>
 
 
-                              <button type="button" routerLink="/collaborateur/reservations" mdbBtn color="secondary"
+                              <button type="button"  routerLink="/collaborateur/reservations" mdbBtn color="secondary"
                                 class="waves-light" aria-label="Close"
                                 (click)="ajouterPassagerCovoiturage(newCovoit.id); basicModal.hide()"
                                 mdbWavesEffect>Confirmer</button>

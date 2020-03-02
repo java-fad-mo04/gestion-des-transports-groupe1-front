@@ -34,7 +34,7 @@ export class CreerReservationsComponent implements OnInit {
 
   resaOk = false;
   err: boolean;
-  dejaPresent: boolean;
+  dejaReserve: boolean;
   dateDepartSociete: Date;
   timeDepart: NgbTimeStruct;
   dateRetourSociete: Date;
@@ -93,6 +93,7 @@ export class CreerReservationsComponent implements OnInit {
   }
 
   reserverVehicule( vehicule: Vehicule) {
+
 
     this.reservationVehicule.vehicule = vehicule;
     this.reservationVehicule.collegue = this.collegue;
