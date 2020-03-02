@@ -65,10 +65,10 @@ export class CreerReservationsComponent implements OnInit {
     }
 
     if (this.depart != "") {
-      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.depart.startsWith(this.depart))));
+      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.depart.toLowerCase().startsWith(this.depart.toLowerCase()))));
     }
     if (this.destination != "") {
-      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.destination.startsWith(this.destination))));
+      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.destination.toLowerCase().startsWith(this.destination.toLowerCase()))));
     }
     if (this.date != null) {
       this.listeCovoiturage = this.listeCovoiturage.pipe(
