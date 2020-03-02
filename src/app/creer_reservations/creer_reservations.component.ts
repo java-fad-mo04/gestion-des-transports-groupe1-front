@@ -34,7 +34,7 @@ export class CreerReservationsComponent implements OnInit {
 
   resaOk = false;
   err: boolean;
-  dejaPresent: boolean;
+  dejaReserve: boolean;
   dateDepartSociete: Date;
   timeDepart: NgbTimeStruct;
   dateRetourSociete: Date;
@@ -61,14 +61,22 @@ export class CreerReservationsComponent implements OnInit {
     this.listeCovoiturage = null;
 
     if (this.depart != "" || this.depart != "" || this.date != null) {
-      this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage();
+      this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage()
+      .pipe(
+        map(
+          resa => resa.filter(r => new Date(r.date).getTime() >= Date.now())
+          .filter(re => re.passagers.every(p => p.id !== this.collegue.id))
+
+            ));
     }
 
     if (this.depart != "") {
-      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.depart.toLowerCase().startsWith(this.depart.toLowerCase()))));
+      this.listeCovoiturage = this.listeCovoiturage
+      .pipe(map(d => d.filter(e => e.depart.toLowerCase().startsWith(this.depart.toLowerCase()))));
     }
     if (this.destination != "") {
-      this.listeCovoiturage = this.listeCovoiturage.pipe(map(d => d.filter(e => e.destination.toLowerCase().startsWith(this.destination.toLowerCase()))));
+      this.listeCovoiturage = this.listeCovoiturage
+      .pipe(map(d => d.filter(e => e.destination.toLowerCase().startsWith(this.destination.toLowerCase()))));
     }
     if (this.date != null) {
       this.listeCovoiturage = this.listeCovoiturage.pipe(
@@ -87,6 +95,7 @@ export class CreerReservationsComponent implements OnInit {
   }
 
   reserverVehicule( vehicule: Vehicule) {
+
 
     this.reservationVehicule.vehicule = vehicule;
     this.reservationVehicule.collegue = this.collegue;
