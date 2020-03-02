@@ -112,16 +112,11 @@
                       <td>{{newCovoit.vehicule.modele}} {{newCovoit.vehicule.marque}}</td>
                       <td>{{newCovoit.chauffeur.prenom}} {{newCovoit.chauffeur.nom.toUpperCase()}}</td>
                       <td>{{newCovoit.vehicule.nombrePlace}}</td>
-                      <ng-container *ngIf="newCovoit.id === collegue.id;else OKresa">
-                        <td style="text-align: center"><button type="button" mdbBtn class="gdp-button2" rounded="true"
-                            mdbWavesEffect (click)="basicModal.show()" disabled>Réserver</button>
-                        </td>
-                      </ng-container>
-                      <ng-template #OKresa>
+                      
                         <td style="text-align: center"><button type="button" [disabled]="newCovoit.vehicule.nombrePlace <= 0" mdbBtn class="gdp-button2" rounded="true"
                             mdbWavesEffect (click)="basicModal.show()">Réserver</button>
                         </td>
-                      </ng-template>
+                      
 
 
 
