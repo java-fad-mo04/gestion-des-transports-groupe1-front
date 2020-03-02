@@ -48,7 +48,7 @@ export class CreerReservationsComponent implements OnInit {
   constructor(private _dataService: DataService, private autth: AuthService) { }
 
 
-  constructor(private _dataService: DataService, private autth: AuthService) { }
+
 
   ngOnInit() {
     this.autth.collegueConnecteObs.subscribe(c => this.collegue = c);
