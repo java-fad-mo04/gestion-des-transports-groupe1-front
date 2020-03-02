@@ -98,6 +98,7 @@ export class VehiculesComponent implements OnInit {
       this.messageNotif = 'Le véhicule a bien été ajouté.';
       this.boutonNotif = 'btn-success';
       this.basicModal.hide();
+      this.vehiculesSociete = this._dataService.listerVehiculesSociete();
       etatForm.reset();
     }, (error: HttpErrorResponse ) => {
       console.log('error', error);
