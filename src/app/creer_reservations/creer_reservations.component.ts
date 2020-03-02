@@ -64,7 +64,8 @@ export class CreerReservationsComponent implements OnInit {
       this.listeCovoiturage = this._dataService.listerAllAnoncesCovoiturage()
       .pipe(
         map(
-          resa => resa.filter(r => new Date(r.date).getTime() >= Date.now() )));
+          resa => resa.filter(r => new Date(r.date).getTime() >= Date.now() && r.passagers.some(p => p.id !== this.collegue.id))
+            ));
     }
 
     if (this.depart != "") {
