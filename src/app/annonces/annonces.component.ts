@@ -30,7 +30,6 @@ export class AnnoncesComponent implements OnInit {
 
     this.annoncesHisto = this._dataService.listerAnnoncesCovoiturage(this.col.id).pipe(
         map(an => an.filter( a => new Date(a.date).getTime() < Date.now() )));
-
   }
   open(id: number) {
     const modalRef = this._modalService.open(ConfirmationSupressionComponent).result
