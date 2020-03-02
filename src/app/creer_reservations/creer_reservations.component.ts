@@ -54,7 +54,7 @@ export class CreerReservationsComponent implements OnInit {
     this.autth.collegueConnecteObs.subscribe(c => this.collegue = c);
     this.vehiculesSociete = this._dataService.listerVehiculesSociete();
 
-
+console.log('vehicule' + this.vehiculesSociete);
 
   }
 

@@ -200,7 +200,7 @@
           </div>
 
           <ngb-carousel>
-            <ng-template ngbSlide *ngFor="let v of vehiculesSociete | async">
+            <ng-template ngbSlide *ngFor="let v of vehiculesSociete">
               <div class="picsum-img-wrapper text-center d-block w-100">
                 <img [src]="v.urlPhoto" class="rounded mx-auto d-block img-fluid" (load)="listerResaParvehicule(v.id)">
               </div>
