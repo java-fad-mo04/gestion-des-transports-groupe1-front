@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Vehicule } from '../models/Vehicule';
 
+
 @Component({
   selector: 'app-vehicule-details',
   templateUrl: './vehicule-details.component.html',
