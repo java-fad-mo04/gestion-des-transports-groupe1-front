@@ -112,11 +112,12 @@
                       <td>{{newCovoit.vehicule.modele}} {{newCovoit.vehicule.marque}}</td>
                       <td>{{newCovoit.chauffeur.prenom}} {{newCovoit.chauffeur.nom.toUpperCase()}}</td>
                       <td>{{newCovoit.vehicule.nombrePlace}}</td>
-                      
-                        <td style="text-align: center"><button type="button" [disabled]="newCovoit.vehicule.nombrePlace <= 0" mdbBtn class="gdp-button2" rounded="true"
-                            mdbWavesEffect (click)="basicModal.show()">Réserver</button>
-                        </td>
-                      
+
+                      <td style="text-align: center"><button type="button"
+                          [disabled]="newCovoit.vehicule.nombrePlace <= 0 || collegue.id === newCovoit.chauffeur.id" mdbBtn class="gdp-button2" rounded="true"
+                          mdbWavesEffect (click)="basicModal.show()">Réserver</button>
+                      </td>
+
 
 
 
@@ -200,26 +201,31 @@
             <input type="date" class="form-control" id="dateRetourSociete" [(ngModel)]="dateRetourSociete"
               name="dateRetourSociete" #etatDateRetour="ngModel" required>
           </div>
-          <mdb-error *ngIf="etatDateRetour.invalid && (etatDateRetour.dirty || etatDateRetour.touched)">Une date de retour est requise</mdb-error>
+          <mdb-error *ngIf="etatDateRetour.invalid && (etatDateRetour.dirty || etatDateRetour.touched)">Une date de
+            retour est requise</mdb-error>
           <div class="col-lg-3 col-sm-8">
-            <ngb-timepicker [(ngModel)]="timeRetour" [hourStep]="hourStep" [minuteStep]="minuteStep" #etatHeureRetour="ngModel" required>
+            <ngb-timepicker [(ngModel)]="timeRetour" [hourStep]="hourStep" [minuteStep]="minuteStep"
+              #etatHeureRetour="ngModel" required>
             </ngb-timepicker>
-            <mdb-error *ngIf="etatHeureRetour.invalid && (etatHeureRetour.dirty || etatHeureRetour.touched)">Une heure de retour est requise</mdb-error>
+            <mdb-error *ngIf="etatHeureRetour.invalid && (etatHeureRetour.dirty || etatHeureRetour.touched)">Une heure
+              de retour est requise</mdb-error>
           </div>
         </div>
 
         <ngb-carousel>
           <ng-template ngbSlide *ngFor="let v of vehiculesSociete | async">
-            <div class="picsum-img-wrapper text-center d-block w-100" >
+            <div class="picsum-img-wrapper text-center d-block w-100">
               <img [src]="v.urlPhoto" class="rounded mx-auto d-block img-fluid" (load)="listerResaParvehicule(v.id)">
             </div>
-            <div class="carousel-caption" >
+            <div class="carousel-caption">
               <h3>{{v.immatriculation}}</h3>
               <p>{{v.marque}} {{v.modele}}</p>
               <p>{{v.categorie}}</p>
               <p *ngIf="v.statut === 'HORS_SERVICE' || v.statut === 'EN_REPARATION'">INDISPONIBLE</p>
-              <p><button  type="button" mdbBtn class="gdp-button2" rounded="true" mdbWavesEffect [disabled]="etatDateDepart.invalid
-                 && etatHeureDepart.invalid && etatDateRetour.invalid && etatHeureRetour.invalid || (v.statut === 'HORS_SERVICE' || v.statut === 'EN_REPARATION')"   (click)="reserverModal.show()">Réserver</button>
+              <p><button type="button" mdbBtn class="gdp-button2" rounded="true" mdbWavesEffect
+                  [disabled]="etatDateDepart.invalid
+                 && etatHeureDepart.invalid && etatDateRetour.invalid && etatHeureRetour.invalid || (v.statut === 'HORS_SERVICE' || v.statut === 'EN_REPARATION')"
+                  (click)="reserverModal.show()">Réserver</button>
               </p>
             </div>
             <!-- modale avec informations détaillées de la réservation -->
@@ -233,10 +239,12 @@
                     </button>
                     <h4 class="modal-title w-100" id="myModalLabel">Détails du covoiturage</h4>
                   </div>
-                  <div class="modal-body" >
-                  <p *ngIf="etatDateDepart.valid && etatHeureDepart.valid">Date/heure réservation : {{dateDepartSociete}}
+                  <div class="modal-body">
+                    <p *ngIf="etatDateDepart.valid && etatHeureDepart.valid">Date/heure réservation :
+                      {{dateDepartSociete}}
                       {{timeDepart.hour.toLocaleString()}}:{{timeDepart.minute.toString()}}</p>
-                    <p *ngIf="etatDateRetour.valid && etatHeureRetour.valid">Date/heure réservation : {{dateRetourSociete}}
+                    <p *ngIf="etatDateRetour.valid && etatHeureRetour.valid">Date/heure réservation :
+                      {{dateRetourSociete}}
                       {{timeRetour.hour.toLocaleString()}}:{{timeRetour.minute.toString()}}</p>
                     <p>Immatriculation : {{v.immatriculation}}</p>
                     <p>Marque :{{v.marque}}</p>
