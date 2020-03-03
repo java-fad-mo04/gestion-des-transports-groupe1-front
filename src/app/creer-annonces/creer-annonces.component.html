@@ -68,7 +68,7 @@
                   <div class="col-3"><label for="depart">Immatriculation</label></div>
                   <div class="col-6">
                     <input type="text" class="form-control" id="immatriculation" [(ngModel)]="veh.immatriculation"
-                      name="immatriculation" required #etatImmatriculation="ngModel" required pattern="">
+                      name="immatriculation"  #etatImmatriculation="ngModel" required pattern="^[A-Z]{1,2}-[0-9]{1,3}-[A-Z]{1,2}$">
                       <mdb-error *ngIf="etatImmatriculation.invalid && (etatImmatriculation.dirty || etatImmatriculation.touched)">Veuillez préciser l'immatricualtion de type AA-123-AA'</mdb-error>
                   </div>
                 </div>
@@ -129,7 +129,7 @@
                   </div>
                 </div>
 
- 
+
 
 
               </div>
@@ -157,12 +157,12 @@
           </div>
 
       </div>
-        
+
 
       <p>&nbsp;</p>
 
 
-      
+
     </div>
 
 </div>
