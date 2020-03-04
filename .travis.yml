@@ -5,7 +5,7 @@ before_script:
   - npm install
 script: npm run build
 deploy:
-  local-dir: dist/gestion-des-transports-groupe1-front
+  local-dir: dist/gestion-des-transports-groupe1
   provider: pages
   skip-cleanup: true
   github-token: $token
